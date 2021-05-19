@@ -1,3 +1,14 @@
+:root{
+  --blanco:#e1e2e3;
+  --negro: #282826;
+  --amarillo:#ffb612;
+  --azul:#3d348b;
+}
+
+
+
+
+
 /**Box-sizing**/
 html {
   box-sizing: border-box;
