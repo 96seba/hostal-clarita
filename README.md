@@ -6,3 +6,7 @@
 * SID/Service Name: xe
 * Usuario: c##clarita
 * Pass: clarita
+
+----
+
+Después de iniciar y conectar la BB.DD. ejecutar `manage.py makemigrations` y `manage.py migrate` para reconstruir las tablas.
