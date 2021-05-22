@@ -1,0 +1,64 @@
+{% extends 'Negocio/base_negocio.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Administrar facturas
+{% endblock titulo %}
+
+{% block nav_admin_facturas %}
+    active
+{% endblock nav_admin_facturas %}
+
+{% block contenido_cliente %}
+
+    <article>
+        <div class="row encabezado">
+            <div class="col-12 col-sm-8">
+                <h1>Administración de facturas</h1>
+            </div>
+            <div class="col-12 col-sm-4 text-end">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-secondary">?</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table align-middle table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>20/03/2021</td>
+                            <td>
+                                <button class="btn btn-primary">Ver</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>03/04/2021</td>
+                            <td>
+                                <button class="btn btn-primary">Ver</button>
+                            </td>
+                            <tr>
+                                <td>1</td>
+                                <td>20/03/2021</td>
+                                <td>
+                                    <button class="btn btn-warning">Generar</button>
+                                </td>
+                            </tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+
+{% endblock contenido_cliente %}

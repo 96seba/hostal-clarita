@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block titulo %}{% endblock titulo %}
+
+{% block contenido %}
+
+    <nav class="col-12">
+    <ul id="menu-navegacion" class="nav nav-tabs">
+        <li class="nav-item">
+        <a
+            href="#"
+            class="nav-link {% block nav_inicio %}{% endblock nav_inicio %}"
+            >Inicio</a
+        >
+        </li>
+        <li class="nav-item">
+        <a
+            href="#"
+            class="nav-link {% block nav_admin_facturas %}{% endblock nav_admin_facturas %}"
+            >Órdenes de compra</a
+        >
+        </li>
+        <li class="nav-item">
+        <a
+            href="#"
+            class="nav-link {% block nav_detalle_factura %}{% endblock nav_detalle_factura %}"
+            >Facturas</a
+        >
+        </li>
+    </ul>
+    </nav>
+
+    {% block contenido_cliente %}
+
+    {% endblock contenido_cliente %}
+
+{% endblock contenido %}

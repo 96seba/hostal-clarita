@@ -1,0 +1,117 @@
+{% extends 'Negocio/base_negocio.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Detalle factura
+{% endblock titulo %}
+
+{% block nav_detalle_facturas %}
+    active
+{% endblock nav_detalle_facturas %}
+
+{% block contenido_cliente %}
+
+    <article>
+        <div class="row encabezado">
+            <div class="col-12 col-sm-8">
+                <h1>Detalle de factura</h1>
+            </div>
+            <div class="col-12 col-sm-4 text-end">
+                <button class="btn btn-warning">Anular</button>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-primary">Imprimir</button>
+                    <button class="btn btn-secondary">?</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table align-middle table-bordered table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Empresa</th>
+                            <td>Superpollo SA</td>
+                        </tr>
+                        <tr>
+                            <th>RUT</th>
+                            <td>55.345.574-2</td>
+                        </tr>
+                        <tr>
+                            <th>Número de factura</th>
+                            <td>00000023</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha</th>
+                            <td>25/05/2021</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12">
+                <h2>Detalle de huéspedes</h2>
+
+                <table class="table align-middle table-bordered table-hover .table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Habitación</th>
+                            <th>Valor</th>
+                            <th>Días</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Marta Martínez</td>
+                            <td>Simple (21)</td>
+                            <td>$17.999</td>
+                            <td>3</td>
+                            <td>$53.997</td>
+                        </tr>
+                        <tr>
+                            <td>Pedro Pérez</td>
+                            <td>Simple (13)</td>
+                            <td>$17.999</td>
+                            <td>3</td>
+                            <td>$53.997</td>
+                        </tr>
+                        <tr>
+                            <td>Gonzalo González</td>
+                            <td>Simple (15)</td>
+                            <td>$17.999</td>
+                            <td>3</td>
+                            <td>$53.997</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12">
+                <h2>Servicios contratados</h2>
+
+                <table class="table align-middle table-bordered table-hover .table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Valor unitario</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Almuerzo general</td>
+                            <td>$4.999</td>
+                            <td>$44.901</td>
+                        </tr>
+                        <tr>
+                            <td>Desayuno general</td>
+                            <td>$2.499</td>
+                            <td>$22.491</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+
+{% endblock contenido_cliente %}
