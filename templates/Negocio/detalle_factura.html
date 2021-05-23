@@ -1,4 +1,4 @@
-{% extends 'Negocio/base_negocio.html' %}
+{% extends 'base.html' %}
 
 {% load static %}
 
@@ -10,7 +10,9 @@
     active
 {% endblock nav_detalle_facturas %}
 
-{% block contenido_cliente %}
+{% block contenido %}
+
+    {% include 'Negocio/nav_cliente.html' %}
 
     <article>
         <div class="row encabezado">
@@ -114,4 +116,4 @@
         </div>
     </article>
 
-{% endblock contenido_cliente %}
+{% endblock contenido %}

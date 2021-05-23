@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %} Panel de {{user.id_rol}} {% endblock titulo %}
+
+{% block contenido %}
+
+{% if user.is_authenticated %}
+
+    <!-- muestra un panel diferenciado
+        para cada rol de usuario -->
+
+    {% if user.es_administrador %}
+        {% include 'Usuarios/nav_administrador.html' %}
+
+        <h1>Bienvenido {{user.username}}<h1>
+
+    {% endif %}
+
+    {% if user.es_empleado %}
+        {% include 'Servicios/nav_empleado.html' %}
+    {% endif %}
+
+    {% if user.es_cliente %}
+        {% include 'Negocio/nav_cliente.html' %}
+    {% endif %}
+
+{% endif %}
+
+{% endblock contenido %}
