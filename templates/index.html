@@ -5,35 +5,137 @@
 {% block titulo %} Acceso a usuarios {% endblock titulo %}
 
 {% block contenido %}
-<div id="registro" class="container">
-    <h1 class="display">Login</h1><br>
-    <form method="POST" id="formulario">
-        {% csrf_token %}
+    <article class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
 
-        <div class="form-group">
-            <label for="username">Nombre de Usuario</label><br>
-            <input name="username" class="form-control" type="text"/>
-            <div class="bg-danger mt-1">{{ form.errors.username }}</div>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Acceso a Clientes
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+
+                        <div class="row m-4">
+                            <span class="lead text-center">Si usted es un Cliente, ingrese sus datos para acceder. Si aún no tiene cuenta, <a href="#">regístrese.</a></span>
+                        </div>
+
+                        <form method="POST" id="formulario">
+                            
+                            {% csrf_token %}
+
+                            <div class="row mb-3 justify-content-center">
+                                <label for="username" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-8">
+                                    <input name="username" class="form-control" type="text">
+                                </div>
+                                <div class="alert-danger col-10">{{ form.errors.username }}</div>
+                            </div>
+                            <div class="row mb-3 justify-content-center">
+                                <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+                                <div class="col-sm-8">
+                                    <input name="password" class="form-control" type="password">
+                                </div>
+                                <div class="alert-danger col-10">{{ form.errors.password }}</div>
+                            </div>
+                            
+                            {% if form.non_field_errors %}
+                            <div class="row mb-3 justify-content-center">
+                                <div class="alert-danger col-10">Inicio de sesión incorrecto</div>
+                            </div>  
+                            {% endif %}
+                            
+                            {{form.non_field_errors}}
+                            
+                            <div class="form-group d-grid gap-2 col-sm-10 mx-auto">
+                                <button type="submit" class="btn btn-primary">Ingresar</button>
+                            </div>
+                            
+                        </form>
+
+                    </div>
+                </div>
+                </div>
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Acceso a Proveedores
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+
+                        <div class="row m-4">
+                            <span class="lead text-center">Si ustéd es un Proveedor, ingrese su RUT para revisar las Ordenes de Pedido asociadas a usted.</span>
+                        </div>
+
+                        <form method="POST" id="formulario">
+                            <div class="row mb-3 justify-content-center">
+                                <label for="username" class="col-sm-1 col-form-label">RUT</label>
+                                <div class="col-sm-9">
+                                    <input name="username" class="form-control" type="text">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group d-grid gap-2 col-sm-10 mx-auto">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+                </div>
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Acceso a administración
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="row m-4">
+                            <span class="lead text-center">Acceso exclusivo administradores y empleados de la empresa.</span>
+                        </div>
+
+                        <form method="POST" id="formulario">
+                            
+                            {% csrf_token %}
+
+                            <div class="row mb-3 justify-content-center">
+                                <label for="username" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-8">
+                                    <input name="username" class="form-control" type="text">
+                                </div>
+                                <div class="alert-danger col-10">{{ form.errors.username }}</div>
+                            </div>
+                            <div class="row mb-3 justify-content-center">
+                                <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+                                <div class="col-sm-8">
+                                    <input name="password" class="form-control" type="password">
+                                </div>
+                                <div class="alert-danger col-10">{{ form.errors.password }}</div>
+                            </div>
+                            
+                            {% if form.non_field_errors %}
+                            <div class="row mb-3 justify-content-center">
+                                <div class="alert-danger col-10">Inicio de sesión incorrecto</div>
+                            </div>  
+                            {% endif %}
+                            
+                            {{form.non_field_errors}}
+                            
+                            <div class="form-group d-grid gap-2 col-sm-10 mx-auto">
+                                <button type="submit" class="btn btn-primary">Ingresar</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+
         </div>
-
-        <div class="form-group">
-            <label for="password">Password</label><br>
-            <input name="password" class="form-control" type="password"/>
-            <div class="bg-danger mt-1">{{ form.errors.password }}</div>
-        </div>
-
-        {% if form.non_field_errors %}
-        <div class="form-group">
-            <div class="bg-danger mt-1 p-2">Login incorrecto!</div>
-        </div>  
-        {% endif %}
-        
-        {{form.non_field_errors}}
-
-        <div class="form-group">
-            <input class="btn" type="submit" value="Enviar"/>
-        </div>
-        
-    </form>
-</div>
+    </article>
 {% endblock contenido %}
