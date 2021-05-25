@@ -60,7 +60,7 @@ class OrdenPedido(models.Model):
     id_orden_pedido = models.AutoField(primary_key=True)
     descripcion = models.CharField(max_length=100)
     suma_precio = models.IntegerField()
-    fecha_recepcion = models.DateField(blank=True, null=True)
+    fecha_recepcion = models.DateTimeField(blank=True, null=True)
     id_empleado = models.ForeignKey(
         Empleado, on_delete=models.CASCADE, db_column='id_empleado')
 

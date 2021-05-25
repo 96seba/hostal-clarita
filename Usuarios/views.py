@@ -4,7 +4,6 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 def index(request):
-
     if 'consulta_proveedor' in request.POST:
         rut = request.POST.get('rut_proveedor')
         try:

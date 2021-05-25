@@ -22,8 +22,9 @@ class Roles(models.Model):
 
 
 class Usuario(AbstractUser):
-    id_rol = models.ForeignKey(Roles, on_delete=models.PROTECT, db_column='id_rol', default=1)
-    
+    id_rol = models.ForeignKey(
+        Roles, on_delete=models.PROTECT, db_column='id_rol', default=1)
+
     @property
     def es_administrador(self):
         if str(self.id_rol) == "Administrador":
@@ -33,7 +34,7 @@ class Usuario(AbstractUser):
     def es_empleado(self):
         if str(self.id_rol) == "Empleado":
             return True
-    
+
     @property
     def es_cliente(self):
         if str(self.id_rol) == "Cliente":
@@ -41,6 +42,7 @@ class Usuario(AbstractUser):
 
     class Meta:
         db_table = 'usuario'
+
 
 class Cliente(models.Model):
     rut_cliente = models.CharField(primary_key=True, max_length=10)
