@@ -20,11 +20,21 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+
     # path('', include('Usuarios.urls')),
-    # path('negocio/', include('Negocio.urls')),
-    # path('servicios/', include('Servicios.urls')),
-    path('', LoginView.as_view(template_name='index.html'), name='index'),
-    path('salir/', LogoutView.as_view(template_name='salir,.html'), name='salir'),
-    path('panel/', TemplateView.as_view(template_name='Usuarios/panel.html'), name='panel'),
+    # path('panel/cliente/', include('Negocio.urls')),
+    # path('panel/empleado/', include('Servicios.urls')),
+
+    path('', include('Usuarios.urls')),
+    path('panel/login',
+         LoginView.as_view(template_name='Usuarios/login.html'), name='login'),
+    path('salir/',
+         LogoutView.as_view(template_name='Usuarios/logout.html'),
+         name='logout'),
+    path('consulta_op/',
+         TemplateView.as_view(template_name='Servicios/consulta_op'),
+         name='consulta_op'),
+    path('panel/',
+         TemplateView.as_view(template_name='Usuarios/panel.html'),
+         name='panel'),
 ]

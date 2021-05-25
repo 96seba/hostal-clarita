@@ -1,4 +1,6 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 
-# def servicios(request):
-    # return render(request, 'Servicios/servicios.html')
+
+# def consulta_op(request, rut_ingresado):
+#     print(rut_ingresado)
+#     return render(request, 'Servicios/consulta_op.html')

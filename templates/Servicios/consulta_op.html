@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Consulta de Ordenes de Pedidos
+{% endblock titulo %}
+
+{% block contenido %}
+    <article>
+        {% if not lista %}
+        <div class="row encabezado">
+            <div class="col-12 text-center">
+                <h1 class="display-5">Actualmente, no hay Órdenes de Pedido para {{proveedor}}</h1>
+            </div>
+            <div class="col-12 text-center">
+                <div class="m-4">
+                    <a href="{% url 'index' %}" class="link-primary">Volver</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="row encabezado">
+            <div class="col-12 col-sm-8">
+                <h1>Listado de Órdenes de Pedido para {{proveedor}}</h1>
+            </div>
+            <div class="col-12 col-sm-4 text-end">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-secondary">?</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table align-middle table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID OP</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for detalle in lista %}
+                        <tr>
+                            <td>{{detalle.id_orden_pedido}}</td>
+                            <td>{{detalle.id_producto.descripcion_producto}}</td>
+                            <td>{{detalle.cantidad}}</td>
+                            <td>{{detalle.precio_total}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+    </article>
+{% endblock contenido %}
