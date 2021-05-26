@@ -3,7 +3,7 @@
 ## Requerimientos
 
 * Base de datos: [Oracle 18c Express](https://www.oracle.com/database/technologies/xe-downloads.html)
-* Enlace al epositorio: https://github.com/kappedro/hostal-clarita
+* Enlace al repositorio: https://github.com/kappedro/hostal-clarita
 
 
 ## Instalación de la BD
@@ -13,7 +13,7 @@
 
 ## Creación de usuario
 
-* Ejecutar el script `1_creacion_esquema.sql`.
+* En la base de datos, ejecutar el script `1_creacion_esquema.sql`.
 
 
 ## Preparación del Ambiente
