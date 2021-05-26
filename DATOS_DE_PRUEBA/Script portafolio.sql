@@ -23,7 +23,7 @@ INSERT INTO ROLES (ID_ROL, NOMBRE_ROL, DESCRIPCION_ROL) VALUES (3, 'Cliente', 'U
 INSERT INTO USUARIO
 	(PASSWORD, ID, IS_SUPERUSER, USERNAME, EMAIL, IS_STAFF, IS_ACTIVE, DATE_JOINED, ID_ROL)
 VALUES('pbkdf2_sha256$260000$p2H61YffpIx7Idc7N026al$8jNNbJoKswtCYBSssQr5ew2RTJ7N7zN6arTxUYpru2Q=',
-	1, 1, 'clarita', 'clarita@hostalclarita.cl', 1, 1, current_timestamp, 1);
+	1, 1, 'clarita@hostalclarita.cl', 'clarita@hostalclarita.cl', 1, 1, current_timestamp, 1);
 
 
 --Empleados
@@ -32,7 +32,7 @@ VALUES('pbkdf2_sha256$260000$p2H61YffpIx7Idc7N026al$8jNNbJoKswtCYBSssQr5ew2RTJ7N
 INSERT INTO USUARIO
 	(PASSWORD, ID, IS_SUPERUSER, USERNAME, EMAIL, IS_STAFF, IS_ACTIVE, DATE_JOINED, ID_ROL)
 VALUES('pbkdf2_sha256$260000$vjQPgOpTZrYDfFkH9cMIFz$s+iBI9n5wwZf5vHcOmNIP63G6nPJViXA92GZq4NOFJ8=',
-	21, 0, 'juan', 'juan@hostalclarita.cl', 0, 1, current_timestamp, 2);
+	21, 0, 'juan@hostalclarita.cl', 'juan@hostalclarita.cl', 0, 1, current_timestamp, 2);
 
 INSERT INTO "C##CLARITA".EMPLEADO
 	(ID_EMPLEADO, NOMBRE_EMPLEADO, RUT_EMPLEADO, CARGO_EMPLEADO, TELEFONO, DIRECCION, USUARIO_ID)
@@ -45,7 +45,7 @@ VALUES(1, 'Juan Jara', '14837665-4', 'Recepcionista', 972645981, 'Sexta Avenida 
 INSERT INTO USUARIO
 	(PASSWORD, ID, IS_SUPERUSER, USERNAME, EMAIL, IS_STAFF, IS_ACTIVE, DATE_JOINED, ID_ROL)
 VALUES('pbkdf2_sha256$260000$vjQPgOpTZrYDfFkH9cMIFz$s+iBI9n5wwZf5vHcOmNIP63G6nPJViXA92GZq4NOFJ8=',
-	31, 0, 'polpaico', 'ceo@polpaico.cl', 0, 1, current_timestamp, 3);
+	31, 0, 'ceo@polpaico.cl', 'ceo@polpaico.cl', 0, 1, current_timestamp, 3);
 
 INSERT INTO CLIENTE
 	(RUT_CLIENTE, NOMBRE_EMPRESA, TELEFONO, ESTADO_CLIENTE, USUARIO_ID)
@@ -55,7 +55,7 @@ VALUES('61438734-3', 'Polpaico', 972856734, 1, 31)
 INSERT INTO USUARIO
 	(PASSWORD, ID, IS_SUPERUSER, USERNAME, EMAIL, IS_STAFF, IS_ACTIVE, DATE_JOINED, ID_ROL)
 VALUES('pbkdf2_sha256$260000$vjQPgOpTZrYDfFkH9cMIFz$s+iBI9n5wwZf5vHcOmNIP63G6nPJViXA92GZq4NOFJ8=',
-	32, 0, 'york', 'ceo@heladosyork.cl', 0, 1, current_timestamp, 3);
+	32, 0, 'ceo@heladosyork.cl', 'ceo@heladosyork.cl', 0, 1, current_timestamp, 3);
 
 INSERT INTO CLIENTE
 	(RUT_CLIENTE, NOMBRE_EMPRESA, TELEFONO, ESTADO_CLIENTE, USUARIO_ID)
@@ -65,7 +65,7 @@ VALUES('62432938-4', 'Helados York', 934784209, 1, 32)
 INSERT INTO USUARIO
 	(PASSWORD, ID, IS_SUPERUSER, USERNAME, EMAIL, IS_STAFF, IS_ACTIVE, DATE_JOINED, ID_ROL)
 VALUES('pbkdf2_sha256$260000$vjQPgOpTZrYDfFkH9cMIFz$s+iBI9n5wwZf5vHcOmNIP63G6nPJViXA92GZq4NOFJ8=',
-	33, 0, 'avon', 'ceo@avon.cl', 0, 1, current_timestamp, 3);
+	33, 0, 'ceo@avon.cl', 'ceo@avon.cl', 0, 1, current_timestamp, 3);
 
 INSERT INTO CLIENTE
 	(RUT_CLIENTE, NOMBRE_EMPRESA, TELEFONO, ESTADO_CLIENTE, USUARIO_ID)
