@@ -20,7 +20,7 @@
                         <form class="form gap-2 col-sm-10 mx-auto" role="form" method="post" action="{% url 'login' %}"
                             accept-charset="UTF-8">
                             
-                            <h3 class="lead text-center mb-4">Si usted es un Cliente y aún no tiene cuenta, <a href="#">regístrese</a> para contratar nuestros servicios.</h3>
+                            <h3 class="lead text-center mb-4">Si usted es un Cliente y aún no tiene cuenta, <a href="{% url 'registro_cliente' %}">regístrese</a> para contratar nuestros servicios.</h3>
                             
                             {% csrf_token %}
 

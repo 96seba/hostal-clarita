@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Administrar facturas
+{% endblock titulo %}
+
+{% block contenido %}
+
+    {% comment %} {% include 'Negocio/nav_cliente.html' %} {% endcomment %}
+
+    <form method="post">
+        <div class="row encabezado">
+            <div class="col-12 col-sm-8">
+                <h1>Registro de cliente</h1>
+            </div>
+            <div class="col-12 col-sm-4 text-end">
+                <div class="btn-group" role="group">
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <button class="btn btn-secondary">?</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <section class="form gap-2 col-sm-10 mx-auto">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group d-grid mb-4">
+                            {{ datos_usuario }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group d-grid mb-4">
+                            {{ datos_cliente }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col d-md-none">
+                    <div class="form-group d-grid mb-4">
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
+
+{% endblock contenido %}

@@ -1,6 +1,6 @@
-from django.urls import path, include
-# from .views import negocio
+from django.urls import path
+from .views import registro_cliente
 
 urlpatterns = [
-    # path('', negocio, name='negocio'),
+    path('registro/', registro_cliente, name='registro_cliente'),
 ]

@@ -48,7 +48,7 @@ class Cliente(models.Model):
     rut_cliente = models.CharField(primary_key=True, max_length=10)
     nombre_empresa = models.CharField(max_length=50)
     telefono = models.IntegerField()
-    estado_cliente = models.BooleanField()
+    estado_cliente = models.BooleanField(default=1)
     usuario = models.OneToOneField(Usuario, on_delete=models.PROTECT)
 
     def __str__(self):

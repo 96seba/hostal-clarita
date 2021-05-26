@@ -9,7 +9,7 @@
         <div class="col-md-10 col-lg-8">
             <form method="POST" id="formulario">
 
-                <h3 class="lead text-center">Para acceder a este contenido, primero debe identificarse. Si usted es un Cliente, y aún no tiene cuenta, <a href="#">regístrese</a>.</h3>
+                <h3 class="lead text-center">Para acceder a este contenido, primero debe identificarse. Si usted es un Cliente y aún no tiene cuenta, <a href="{% url 'registro_cliente' %}">regístrese</a>.</h3>
                 
                 {% csrf_token %}
 
