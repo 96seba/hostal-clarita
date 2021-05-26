@@ -1,13 +1,4 @@
 
---CREACIÓN DEL ESQUEMA
-
-create user c##clarita identified by clarita;
-grant connect, resource to c##clarita;
-alter user c##clarita default tablespace users quota unlimited on users;
-
-----------------------------------------------------------------------------
-----------------------------------------------------------------------------
-
 --ROLES
 
 INSERT INTO ROLES (ID_ROL, NOMBRE_ROL, DESCRIPCION_ROL) VALUES (1, 'Administrador', 'Usuario que tiene acceso a todas las funciones de la Aplicación');
