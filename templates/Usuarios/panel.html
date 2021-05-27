@@ -4,25 +4,17 @@
 
 {% block titulo %} Panel de {{user.id_rol}} {% endblock titulo %}
 
+{% block pag_actual %}panel-inicio{% endblock pag_actual %}
+
 {% block contenido %}
-
-    <!-- muestra un panel diferenciado
-        para cada rol de usuario -->
-
-    {% if user.es_administrador %}
-        {% include 'Usuarios/nav_administrador.html' %}
-    {% endif %}
-
-    {% if user.es_empleado %}
-        {% include 'Servicios/nav_empleado.html' %}
-    {% endif %}
-
-    {% if user.es_cliente %}
-        {% include 'Negocio/nav_cliente.html' %}
-    {% endif %}
-
     <article>
         <h1>Bienvenido al panel de {{user.id_rol}}<h1>
+    {% if user.es_administrador %}
+        <!-- contenido del administrador -->
+    {% elif user.es_empleado %}
+        <!-- contenido del empleado -->
+    {% elif user.es_cliente %}
+        <!-- contenido del cliente -->
+    {% endif %}
     </article>
-
 {% endblock contenido %}

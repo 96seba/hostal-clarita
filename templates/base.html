@@ -8,36 +8,110 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hostal Clarita: {% block titulo %}{% endblock titulo %}</title>
-    
     <!-- Bootstrap -->
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <!-- Estilos propios -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="container">
-        <header class="row">
-            <div id="logo-placeholder" class="col-8">
-                <span><b>Hostal Doña Clarita</b>&emsp;Panel del cliente</span>
+        <header class="mt-sm-4">
+            <div id="logo" class="row">
+                <div class="col-12 d-flex align-items-center">
+                    <a href="/">
+                        <span id="logo-i" class="bi bi-house-fill"></span><span id="logo-t">Hostal Doña Clarita</span>
+                    </a>
+                </div>
             </div>
-            <div class="col-4">
             {% if user.is_authenticated %}
-                <ul id="menu-usuario" class="nav justify-content-end">
-                    <li class="nav-item"><a href="#" class="nav-link"><b>{{user.username}}</b></a></li>
-                    <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Salir</a></li>
-                </ul>
-            {% endif %}
+            <div class="row">
+                <nav id="menu-usuario" class="navbar navbar-expand-md">
+                    <span class="navbar-brand">Panel de {{user.id_rol}}</span>
+                    <button onclick="toggleMenuUsuario()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="bi-list"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse justify-content-end" id="menu-usuario-ul">
+                        <ul class="navbar-nav mr-auto">
+                            {% if user.es_administrador %}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><b>{{user.username}}</b></a>
+                            </li>
+                            {% elif user.es_empleado %}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><b>{{user.empleado.nombre_empleado}}</b></a>
+                            </li>
+                            {% elif user.es_cliente %}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><b>{{user.cliente.nombre_empresa}}</b></a>
+                            </li>
+                            {% endif %}
+                            <li class="nav-item">
+                                <a href="{% url 'logout' %}" class="nav-link">Salir</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
+            {% endif %}
         </header>
-
+        {% if user.is_authenticated %}
+        <nav id="menu-funciones" class="col-12">
+            <ul id="menu-navegacion" class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="{% url 'panel' %}" id="panel-inicio" class="nav-link">Inicio</a>
+                </li>
+                {% if user.es_administrador %}
+                <li class="nav-item">
+                    <a href="#" id="" class="nav-link">...</a>
+                </li>
+                {% elif user.es_empleado %}
+                <li class="nav-item">
+                    <a href="#" id="recepcion-huespedes" class="nav-link">Recepción de huéspedes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" id="ordenes-pedido" class="nav-link">Órdenes de pedido</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" id="servicios-comedor" class="nav-link">Servicios de comedor</a>
+                </li>  
+                {% elif user.es_cliente %}
+                <li class="nav-item">
+                    <a href="#" id="ordenes-compra" class="nav-link">Órdenes de compra</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" id="facturas" class="nav-link">Facturas</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
         {% block contenido %} {% endblock contenido %}
-        
+        <footer class="row mb-sm-4">
+            <div class="col d-flex align-items-center justify-content-center">
+                <span>&copy; Hostal Doña clarita.</span>
+            </div>
+        </footer>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            let pag = document.getElementById('{% block pag_actual %}{% endblock pag_actual %}');
+            pag.classList.add("active");
+        });
+
+        function toggleMenuUsuario(){
+            let menu = document.getElementById("menu-usuario-ul");
+            if (menu.classList.contains("show")) {
+                menu.classList.remove("show");
+            } else {
+                menu.classList.add("show");
+            }
+        }
+    </script>
 </body>
 </html>

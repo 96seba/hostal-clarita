@@ -2,18 +2,11 @@
 
 {% load static %}
 
-{% block titulo %}
-    Administrar facturas
-{% endblock titulo %}
+{% block titulo %}Administrar facturas{% endblock titulo %}
 
-{% block nav_admin_facturas %}
-    active
-{% endblock nav_admin_facturas %}
+{% block pag_actual %}facturas{% endblock pag_actual %}
 
 {% block contenido %}
-
-    {% include 'Negocio/nav_cliente.html' %}
-
     <article>
         <div class="row encabezado">
             <div class="col-12 col-sm-8">
@@ -62,5 +55,4 @@
             </div>
         </div>
     </article>
-
 {% endblock contenido %}

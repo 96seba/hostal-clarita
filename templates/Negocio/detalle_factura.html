@@ -2,18 +2,11 @@
 
 {% load static %}
 
-{% block titulo %}
-    Detalle factura
-{% endblock titulo %}
+{% block titulo %}Detalle factura{% endblock titulo %}
 
-{% block nav_detalle_facturas %}
-    active
-{% endblock nav_detalle_facturas %}
+{% block pag_actual %}facturas{% endblock pag_actual %}
 
 {% block contenido %}
-
-    {% include 'Negocio/nav_cliente.html' %}
-
     <article>
         <div class="row encabezado">
             <div class="col-12 col-sm-8">
@@ -115,5 +108,4 @@
             </div>
         </div>
     </article>
-
 {% endblock contenido %}
