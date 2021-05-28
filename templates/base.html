@@ -99,19 +99,8 @@
         </footer>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function(){
-            let pag = document.getElementById('{% block pag_actual %}{% endblock pag_actual %}');
-            pag.classList.add("active");
-        });
-
-        function toggleMenuUsuario(){
-            let menu = document.getElementById("menu-usuario-ul");
-            if (menu.classList.contains("show")) {
-                menu.classList.remove("show");
-            } else {
-                menu.classList.add("show");
-            }
-        }
+        var pag_actual = "{% block pag_actual %}{% endblock pag_actual %}"
     </script>
+    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

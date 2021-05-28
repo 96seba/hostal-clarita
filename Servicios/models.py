@@ -10,6 +10,30 @@ from django.db import models
 from Usuarios.models import Empleado
 
 
+class FamiliaProducto(models.Model):
+    id_familia = models.IntegerField(primary_key=True)
+    descripcion_familia = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.descripcion_familia
+
+    class Meta:
+        db_table = 'familia_producto'
+
+
+class TipoProducto(models.Model):
+    id_tipo = models.IntegerField(primary_key=True)
+    descripcion_tipo = models.CharField(max_length=50)
+    id_familia = models.ForeignKey(
+        FamiliaProducto, on_delete=models.PROTECT, db_column='id_familia')
+
+    def __str__(self):
+        return self.descripcion_tipo
+
+    class Meta:
+        db_table = 'tipo_producto'
+
+
 class Proveedor(models.Model):
     rut_proveedor = models.CharField(primary_key=True, max_length=10)
     nombre_proveedor = models.CharField(max_length=50)
@@ -38,16 +62,38 @@ class Proveedor(models.Model):
 
 
 class Producto(models.Model):
-    id_producto = models.AutoField(primary_key=True)
-    familia_producto = models.IntegerField()
-    fecha_vencimiento = models.IntegerField()
-    tipo_producto = models.IntegerField()
+    id_producto = models.IntegerField(primary_key=True)
+    fecha_vencimiento = models.DateField()
     descripcion_producto = models.CharField(max_length=50)
     precio_producto = models.IntegerField()
     stock_producto = models.IntegerField()
     stock_critico_producto = models.IntegerField()
     rut_proveedor = models.ForeignKey(
         Proveedor, on_delete=models.CASCADE, db_column='rut_proveedor')
+
+    def cmb_familias_tipos(self):
+        familias = FamiliaProducto.objects.order_by('descripcion_familia')
+        lista_familias = []
+        for familia in familias:
+            tipos = TipoProducto.objects.order_by('descripcion_tipo').filter(id_familia=familia)
+            lista_tipos = []
+            for tipo in tipos:
+                lista_tipos.append(tipo.descripcion_tipo)
+            dic_familia = {
+                "familia": familia.descripcion_familia,
+                "tipos": lista_tipos
+            }
+            lista_familias.append(dic_familia)
+        return lista_familias
+
+    # (?)
+    def generar_id(self, familia, tipo):
+        id_concatenado = self.rut_proveedor[:-2] + str(familia) + str(tipo)
+        try:
+            id_generado = int(id_concatenado)
+        except ValueError:
+            print("La cadena de caracteres no pudo convertirse en un número.")
+        return id_generado
 
     def __str__(self):
         return self.descripcion_producto
@@ -58,11 +104,13 @@ class Producto(models.Model):
 
 class OrdenPedido(models.Model):
     id_orden_pedido = models.AutoField(primary_key=True)
-    descripcion = models.CharField(max_length=100)
     suma_precio = models.IntegerField()
     fecha_recepcion = models.DateTimeField(blank=True, null=True)
+    observaciones = models.CharField(max_length=100, blank=True, null=True)
+    rut_proveedor = models.ForeignKey(
+        Proveedor, on_delete=models.PROTECT, db_column='rut_proveedor')
     id_empleado = models.ForeignKey(
-        Empleado, on_delete=models.CASCADE, db_column='id_empleado')
+        Empleado, on_delete=models.PROTECT, db_column='id_empleado')
 
     def __str__(self):
         return str(self.id_orden_pedido)

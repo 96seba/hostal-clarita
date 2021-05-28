@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from Servicios.models import Proveedor
+from Servicios.models import Proveedor, OrdenPedido, DetalleOrdenPedido
 from django.core.exceptions import ObjectDoesNotExist
 
 
 def index(request):
+    OrdenPedido.objects.create()
+    DetalleOrdenPedido.objects.create()
     if 'consulta_proveedor' in request.POST:
         rut = request.POST.get('rut_proveedor')
         try:
@@ -18,5 +20,4 @@ def index(request):
 
         except ObjectDoesNotExist:
             print("beboop")
-
     return render(request, 'Usuarios/index.html')
