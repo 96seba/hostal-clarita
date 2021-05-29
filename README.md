@@ -31,7 +31,11 @@
     * SID/Service Name: xe
     * Usuario: c##clarita
     * Contraseña: clarita
-* Abrir una terminal dentro de la carpeta del código fuente y ejecutar `python manage.py makemigrations Negocio`, `python manage.py makemigrations Servicios` y `python manage.py makemigrations Usuarios` seguido de `python manage.py migrate`.
+* Abrir una terminal dentro de la carpeta del código fuente y ejecutar:
+    * `python manage.py makemigrations Negocio`
+    * `python manage.py makemigrations Servicios`
+    * `python manage.py makemigrations Usuarios`
+    * `python manage.py migrate`
 * En la base de datos, ejecutar el script `2_poblado_tablas.sql`.
 
 ## Ejecución
