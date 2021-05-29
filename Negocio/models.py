@@ -6,6 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.utils.timezone import now as fecha_hora_actual
 from Usuarios.models import Cliente
 
 
@@ -40,7 +41,7 @@ class OrdenDeCompra(models.Model):
     id_orden_compra = models.AutoField(primary_key=True)
     servicios_contratados = models.CharField(max_length=50)
     cantidad_huespedes = models.IntegerField()
-    fecha_orden_compra = models.DateTimeField()
+    fecha_orden_compra = models.DateTimeField(default=fecha_hora_actual)
     tipos_habitacion = models.CharField(max_length=50, choices=TIPO_HABITACION)
     rut_cliente = models.ForeignKey(
         Cliente, on_delete=models.PROTECT, db_column='rut_cliente')

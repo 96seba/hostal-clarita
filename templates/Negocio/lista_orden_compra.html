@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}Órdenes de compra{% endblock titulo %}
+
+{% block pag_actual %}ordenes-compra{% endblock pag_actual %}
+
+{% block contenido %}
+    <article>
+        <div class="row encabezado">
+            <div class="col-12 col-sm-6 order-md-last text-end">
+                <a href="{% url 'registro_orden_compra' %}" class="btn btn-primary">Generar nueva orden</a>
+                <button class="btn btn-secondary">?</button>
+            </div>
+            <div class="col-12 col-sm-6 text-center">
+                <h2>Órdenes de compra</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                {% if not lista_oc %}
+                <span class="lead">Actualmente, no hay órdenes de compra.</span>
+                {% else %}
+                <table class="table align-middle table-bordered table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Servicios contratados</th>
+                            <th>Huéspedes</th>
+                            <th>Tipo de habitaciones</th>
+                            <th>Acciones</th>
+                        </tr>
+                        {% for orden in lista_oc %}
+                        <tr>
+                            <td>lista_oc.fecha_orden_compra</td>
+                            <td>lista_oc.servicios_contratados</td>
+                            <td>lista_oc.cantidad_huespedes</td>
+                            <td>lista_oc.tipos_habitacion</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="#" class="btn btn-secondary">Actualizar</a>
+                                    <a href="#" class="btn btn-secondary">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+        </div>
+    </article>
+{% endblock contenido %}

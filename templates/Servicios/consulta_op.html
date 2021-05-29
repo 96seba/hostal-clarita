@@ -8,30 +8,22 @@
 
 {% block contenido %}
     <article>
-        {% if not lista %}
         <div class="row encabezado">
-            <div class="col-12 text-center">
-                <h1 class="display-6">Actualmente, no hay pedidos para {{proveedor}}</h1>
+            <div class="col-6 col-sm-1 order-md-first">
+                <a href="{% url 'index' %}" class="btn btn-secondary"><span class="bi-arrow-left"></span></a>
             </div>
-            <div class="col-12 text-center">
-                <div class="m-4">
-                    <a href="{% url 'index' %}" class="link-primary">Volver</a>
-                </div>
+            <div class="col-6 col-sm-1 order-md-last text-end">
+                <button class="btn btn-secondary">?</button>
             </div>
-        </div>
-        {% else %}
-        <div class="row encabezado">
-            <div class="col-12 col-sm-8">
-                <h1>Listado de pedidos para {{proveedor}}</h1>
-            </div>
-            <div class="col-12 col-sm-4 text-end">
-                <div class="btn-group" role="group">
-                    <button class="btn btn-secondary">?</button>
-                </div>
+            <div class="col-12 col-sm-10 text-center">
+                <h2>Pedidos para {{proveedor}}</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col text-center">
+            {% if not lista %}
+                <span class="lead">Hasta el momento hay pedidos enviados.</span>
+            {% else %}
                 <table class="table align-middle table-hover table-bordered">
                     <thead>
                         <tr>
@@ -50,8 +42,8 @@
                         {% endfor %}
                     </tbody>
                 </table>
+            {% endif %}
             </div>
         </div>
-        {% endif %}
     </article>
 {% endblock contenido %}

@@ -3,21 +3,24 @@
 {% load static %}
 
 {% block titulo %}
-    Administrar facturas
+    Registro de nuevo cliente
 {% endblock titulo %}
 
 {% block contenido %}
     <article>
     <form method="post">
         <div class="row encabezado">
-            <div class="col-12 col-sm-8">
-                <h1>Registro de cliente</h1>
+            <div class="col-4 col-md-2 order-md-first">
+                <a href="{% url 'index' %}" class="btn btn-secondary"><span class="bi-arrow-left"></span></a>
             </div>
-            <div class="col-12 col-sm-4 text-end">
+            <div class="col-12 col-sm-4 order-md-last text-end">
                 <div class="btn-group" role="group">
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                     <button class="btn btn-secondary">?</button>
                 </div>
+            </div>
+            <div class="col-12 col-sm-8 text-center">
+                <h2>Registro de cliente</h2>
             </div>
         </div>
         <div class="row">

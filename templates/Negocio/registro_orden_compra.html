@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}Nueva orden de compra{% endblock titulo %}
+
+{% block pag_actual %}ordenes-compra{% endblock pag_actual %}
+
+{% block contenido %}
+    <article>
+    <form method="post">
+        <div class="row encabezado">
+            <div class="col-4 col-md-2 order-md-first">
+                <a href="{% url 'listar_ordenes_compra' %}" class="btn btn-secondary"><span class="bi-arrow-left"></span></a>
+            </div>
+            <div class="col-8 col-md-4 order-md-last text-end">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button class="btn btn-secondary">?</button>
+            </div>
+            <div class="col-12 col-md-6 text-center">
+                <h2>Ingresar nueva orden</h2>
+            </div>
+        </div>
+        <div class="row">
+            <section class="form gap-2 col-sm-10 mx-auto">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group d-grid mb-4">
+                            {{ form_oc }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col d-md-none">
+                    <div class="form-group d-grid mb-4">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
+    </article>
+
+{% endblock contenido %}

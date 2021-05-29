@@ -40,15 +40,15 @@
                         <ul class="navbar-nav mr-auto">
                             {% if user.es_administrador %}
                             <li class="nav-item">
-                                <a href="#" class="nav-link"><b>{{user.username}}</b></a>
+                                <span class="d-none d-md-block p-2">{{user.username}}</span>
                             </li>
                             {% elif user.es_empleado %}
                             <li class="nav-item">
-                                <a href="#" class="nav-link"><b>{{user.empleado.nombre_empleado}}</b></a>
+                                <span class="d-none d-md-block p-2">{{user.empleado.nombre_empleado}}</span>
                             </li>
                             {% elif user.es_cliente %}
                             <li class="nav-item">
-                                <a href="#" class="nav-link"><b>{{user.cliente.nombre_empresa}}</b></a>
+                                <span class="d-none d-md-block p-2">{{user.cliente.nombre_empresa}}</span>
                             </li>
                             {% endif %}
                             <li class="nav-item">
@@ -64,35 +64,37 @@
             {% endif %}
         </header>
         {% if user.is_authenticated %}
-        <nav id="menu-funciones" class="col-12">
-            <ul id="menu-navegacion" class="nav nav-tabs">
-                <li class="nav-item">
-                    <a href="{% url 'panel' %}" id="panel-inicio" class="nav-link">Inicio</a>
-                </li>
-                {% if user.es_administrador %}
-                <li class="nav-item">
-                    <a href="#" id="" class="nav-link">...</a>
-                </li>
-                {% elif user.es_empleado %}
-                <li class="nav-item">
-                    <a href="#" id="recepcion-huespedes" class="nav-link">Recepción de huéspedes</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" id="ordenes-pedido" class="nav-link">Órdenes de pedido</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" id="servicios-comedor" class="nav-link">Servicios de comedor</a>
-                </li>  
-                {% elif user.es_cliente %}
-                <li class="nav-item">
-                    <a href="#" id="ordenes-compra" class="nav-link">Órdenes de compra</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" id="facturas" class="nav-link">Facturas</a>
-                </li>
-                {% endif %}
-            </ul>
-        </nav>
+        <div class="row">
+            <nav id="menu-funciones" class="col-12">
+                <ul id="menu-navegacion" class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="{% url 'panel' %}" id="panel-inicio" class="nav-link">Inicio</a>
+                    </li>
+                    {% if user.es_administrador %}
+                    <li class="nav-item">
+                        <a href="#" id="" class="nav-link">...</a>
+                    </li>
+                    {% elif user.es_empleado %}
+                    <li class="nav-item">
+                        <a href="#" id="recepcion-huespedes" class="nav-link">Recepción de huéspedes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="ordenes-pedido" class="nav-link">Órdenes de pedido</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="servicios-comedor" class="nav-link">Servicios de comedor</a>
+                    </li>  
+                    {% elif user.es_cliente %}
+                    <li class="nav-item">
+                        <a href="{% url 'listar_ordenes_compra' %}" id="ordenes-compra" class="nav-link">Órdenes de compra</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="facturas" class="nav-link">Facturas</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
         {% endif %}
         {% block contenido %} {% endblock contenido %}
         <footer class="row mb-sm-4">

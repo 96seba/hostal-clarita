@@ -9,15 +9,16 @@
 {% block contenido %}
     <article>
         <div class="row encabezado">
-            <div class="col-12 col-sm-8">
-                <h1>Detalle de factura</h1>
+            <div class="col-4 col-md-2 order-md-first">
+                <a href="{% url 'facturas' %}" class="btn btn-secondary"><span class="bi-arrow-left"></span></a>
             </div>
-            <div class="col-12 col-sm-4 text-end">
+            <div class="col-8 col-sm-4 order-md-last text-end">
                 <button class="btn btn-warning">Anular</button>
-                <div class="btn-group" role="group">
-                    <button class="btn btn-primary">Imprimir</button>
-                    <button class="btn btn-secondary">?</button>
-                </div>
+                <button class="btn btn-primary">Imprimir</button>
+                <button class="btn btn-secondary">?</button>
+            </div>
+            <div class="col-12 col-sm-8 text-center">
+                <h2>Detalle de factura</h2>
             </div>
         </div>
         <div class="row">
