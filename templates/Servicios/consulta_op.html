@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block titulo %}
-    Consulta de Ordenes de Pedidos
+    Consulta de pedidos para {{proveedor}}
 {% endblock titulo %}
 
 {% block contenido %}
@@ -11,7 +11,7 @@
         {% if not lista %}
         <div class="row encabezado">
             <div class="col-12 text-center">
-                <h1 class="display-5">Actualmente, no hay Órdenes de Pedido para {{proveedor}}</h1>
+                <h1 class="display-6">Actualmente, no hay pedidos para {{proveedor}}</h1>
             </div>
             <div class="col-12 text-center">
                 <div class="m-4">
@@ -22,7 +22,7 @@
         {% else %}
         <div class="row encabezado">
             <div class="col-12 col-sm-8">
-                <h1>Listado de Órdenes de Pedido para {{proveedor}}</h1>
+                <h1>Listado de pedidos para {{proveedor}}</h1>
             </div>
             <div class="col-12 col-sm-4 text-end">
                 <div class="btn-group" role="group">
@@ -35,19 +35,17 @@
                 <table class="table align-middle table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>ID OP</th>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
+                            <th>Orden de Pedido</th>
                             <th>Total</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for detalle in lista %}
+                        {% for orden in lista %}
                         <tr>
-                            <td>{{detalle.id_orden_pedido}}</td>
-                            <td>{{detalle.id_producto.descripcion_producto}}</td>
-                            <td>{{detalle.cantidad}}</td>
-                            <td>{{detalle.precio_total}}</td>
+                            <td>{{orden.id_orden_pedido}}</td>
+                            <td>{{orden.suma_precio}}</td>
+                            <td><button class="btn btn-primary">Ver detalle</button></td>
                         </tr>
                         {% endfor %}
                     </tbody>

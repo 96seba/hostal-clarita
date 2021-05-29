@@ -37,32 +37,21 @@ class TipoProducto(models.Model):
 class Proveedor(models.Model):
     rut_proveedor = models.CharField(primary_key=True, max_length=10)
     nombre_proveedor = models.CharField(max_length=50)
+    correo = models.CharField(max_length=50)
     rubro = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nombre_proveedor
 
     def listar_op_proveedor(rut):
-        # recuperar todos los productos de un mismo proveedor
-        productos = Producto.objects.filter(rut_proveedor=rut)
-        # crear una lista vacía...
-        op = []
-        for producto in productos:
-            # recorrer todos los productos para buscar
-            # todas las OP que los contengan
-            lista = DetalleOrdenPedido.objects.filter(
-                id_producto=producto.id_producto)
-            # e ir almacenandolos en la lista
-            for detalle in lista:
-                op.append(detalle)
-        return op
+        return OrdenPedido.objects.filter(rut_proveedor=rut)
 
     class Meta:
         db_table = 'proveedor'
 
 
 class Producto(models.Model):
-    id_producto = models.IntegerField(primary_key=True)
+    id_producto = models.BigIntegerField(primary_key=True)
     fecha_vencimiento = models.DateField()
     descripcion_producto = models.CharField(max_length=50)
     precio_producto = models.IntegerField()
@@ -105,6 +94,7 @@ class Producto(models.Model):
 class OrdenPedido(models.Model):
     id_orden_pedido = models.AutoField(primary_key=True)
     suma_precio = models.IntegerField()
+    enviada = models.BooleanField(default=0)
     fecha_recepcion = models.DateTimeField(blank=True, null=True)
     observaciones = models.CharField(max_length=100, blank=True, null=True)
     rut_proveedor = models.ForeignKey(

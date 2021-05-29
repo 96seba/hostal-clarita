@@ -9,10 +9,23 @@ from django.db import models
 from Usuarios.models import Cliente
 
 
+ESTADO_HABITACION = [
+    ('disponible', 'Disponible'),
+    ('asignada', 'Asignada'),
+    ('mantencion', 'En mantención')
+]
+
+TIPO_HABITACION = [
+    ('individual', 'Individual'),
+    ('doble', 'Doble'),
+    ('matrimonial', 'Matrimonial'),
+]
+
+
 class Habitacion(models.Model):
     nro_habitacion = models.IntegerField(primary_key=True)
-    estado_habitacion = models.BooleanField()
-    tipo_cama = models.CharField(max_length=40)
+    estado_habitacion = models.CharField(max_length=25, choices=ESTADO_HABITACION, default='disponible')
+    tipo_cama = models.CharField(max_length=50, choices=TIPO_HABITACION)
     accesorios_habitacion = models.CharField(max_length=50)
     precio_habitacion = models.IntegerField()
 
@@ -28,7 +41,7 @@ class OrdenDeCompra(models.Model):
     servicios_contratados = models.CharField(max_length=50)
     cantidad_huespedes = models.IntegerField()
     fecha_orden_compra = models.DateTimeField()
-    tipos_habitacion = models.CharField(max_length=50)
+    tipos_habitacion = models.CharField(max_length=50, choices=TIPO_HABITACION)
     rut_cliente = models.ForeignKey(
         Cliente, on_delete=models.PROTECT, db_column='rut_cliente')
 
@@ -41,13 +54,12 @@ class OrdenDeCompra(models.Model):
 
 class Huesped(models.Model):
     id_huesped = models.AutoField(primary_key=True)
-    rut_huesped = models.CharField(max_length=10)
     nombre_huesped = models.CharField(max_length=60)
     fecha_recepcion = models.DateTimeField(blank=True, null=True)
     nro_habitacion = models.ForeignKey(
-        Habitacion, on_delete=models.CASCADE, db_column='nro_habitacion')
+        Habitacion, on_delete=models.PROTECT, db_column='nro_habitacion', blank=True, null=True)
     id_orden_compra = models.ForeignKey(
-        OrdenDeCompra, on_delete=models.CASCADE, db_column='id_orden_compra')
+        OrdenDeCompra, on_delete=models.PROTECT, db_column='id_orden_compra')
 
     def __str__(self):
         return self.nombre_huesped

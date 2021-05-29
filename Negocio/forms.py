@@ -22,9 +22,8 @@ class FormularioCliente(forms.ModelForm):
 class FormularioUsuario(UserCreationForm):
     class Meta:
         model = Usuario
-        fields = [
-            'email'
-        ]
+        fields = ['username', 'email']
         labels = {
+            'username': 'Usuario',
             'email': 'Correo',
         }

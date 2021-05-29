@@ -31,26 +31,26 @@
     * SID/Service Name: xe
     * Usuario: c##clarita
     * Contraseña: clarita
-* Abrir una terminal dentro de la carpeta del código fuente y ejecutar `python manage.py makemigrations` seguido de `python manage.py migrate`.
+* Abrir una terminal dentro de la carpeta del código fuente y ejecutar `python manage.py makemigrations Negocio`, `python manage.py makemigrations Servicios` y `python manage.py makemigrations Usuarios` seguido de `python manage.py migrate`.
 * En la base de datos, ejecutar el script `2_poblado_tablas.sql`.
 
 ## Ejecución
 * Para iniciar la aplicación web, ejecutar `python manage.py runserver`.
 * Usar los siguientes datos de prueba:
     * Administrador
-        * Correo: clarita@hostalclarita.cl
+        * Usuario: clarita
         * Contraseña: clarita
     * Empleado
-        * Correo: juan@hostalclarita.cl
+        * Usuario: juan
         * Contraseña: empleado
     * Cliente 1
-        * Correo: ceo@polpaico.cl
+        * Usuario: polpaico
         * Contraseña: cliente
     * Cliente 2
-        * Correo: ceo@heladosyork.cl
+        * Usuario: york
         * Contraseña: cliente
     * Cliente 3
-        * Correo: ceo@avon.cl
+        * Usuario: avon
         * Contraseña: cliente
     * Proveedor 1:
         * RUT: 91753234-6
