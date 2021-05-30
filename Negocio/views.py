@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from Usuarios.models import Roles
 from Usuarios.forms import FormularioUsuario, FormularioCliente
-# from .models import OrdenDeCompra
+from .models import OrdenDeCompra
 from .forms import FormularioOrdenCompra
 
 
@@ -31,16 +31,21 @@ def registro_cliente(request):
 
 def listar_ordenes_compra(request):
     # recuperar el rut del cliente actualmente logueado
-    rut = request.user.email
-    print(rut)
+    rut_usuario = request.user.cliente.rut_cliente
     # recuperar todas las OC de ese cliente
+    lista_oc = OrdenDeCompra.objects.filter(rut_cliente=rut_usuario)
     # enviarlas a la vista
-    return render(request, 'Negocio/lista_orden_compra.html')
+    return render(request, 'Negocio/lista_orden_compra.html', {'lista_oc': lista_oc})
 
 
 def registro_orden_compra(request):
     if request.method == 'POST':
-        pass
+        if 'datos_oc' in request.POST:
+            pass
+        elif 'datos_huesped' in request.POST:
+            pass
+        elif 'guardar' in request.POST:
+            pass
     else:
         form_oc = FormularioOrdenCompra()
     return render(request, 'Negocio/registro_orden_compra.html', {'form_oc': form_oc})

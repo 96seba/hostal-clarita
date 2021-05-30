@@ -15,8 +15,3 @@ class FormularioOrdenCompra(forms.ModelForm):
             'cantidad_huespedes': 'Cantidad de huéspedes',
             'tipos_habitacion': 'Tipo de habitación',
         }
-        # widgets = {
-        #     'rut_cliente': forms.TextInput(),
-        #     'nombre_empresa': forms.TextInput(),
-        #     'telefono': forms.TextInput(),
-        # }
