@@ -26,20 +26,18 @@
                     <tbody>
                         <tr>
                             <th>Fecha</th>
-                            <th>Servicios contratados</th>
                             <th>Huéspedes</th>
                             <th>Tipo de habitaciones</th>
                             <th>Acciones</th>
                         </tr>
                         {% for orden in lista_oc %}
                         <tr>
-                            <td>lista_oc.fecha_orden_compra</td>
-                            <td>lista_oc.servicios_contratados</td>
-                            <td>lista_oc.cantidad_huespedes</td>
-                            <td>lista_oc.tipos_habitacion</td>
+                            <td>{{ orden.fecha_orden_compra|date:'d-m-Y' }}</td>
+                            <td>{{ orden.cantidad_huespedes }}</td>
+                            <td>{{ orden.tipos_habitacion }}</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a href="#" class="btn btn-secondary">Actualizar</a>
+                                    <a href="#" class="btn btn-secondary">Ver</a>
                                     <a href="#" class="btn btn-secondary">Eliminar</a>
                                 </div>
                             </td>

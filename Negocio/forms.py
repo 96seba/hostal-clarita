@@ -1,5 +1,5 @@
 from django import forms
-from .models import OrdenDeCompra
+from .models import OrdenDeCompra, Huesped
 
 
 class FormularioOrdenCompra(forms.ModelForm):
@@ -7,11 +7,17 @@ class FormularioOrdenCompra(forms.ModelForm):
         model = OrdenDeCompra
         fields = [
             'servicios_contratados',
-            'cantidad_huespedes',
             'tipos_habitacion'
         ]
         labels = {
             'servicios_contratados': 'Servicios contratados',
-            'cantidad_huespedes': 'Cantidad de huéspedes',
             'tipos_habitacion': 'Tipo de habitación',
         }
+
+
+FormulariosHuespedes = forms.modelformset_factory(
+    Huesped,
+    fields=('nombre_huesped',),
+    extra=1,
+    labels={'nombre_huesped': 'Nombre'}
+)
