@@ -19,8 +19,8 @@
 ## Preparación del Ambiente
 
 * Descomprimir el archivo `codigo_fuente_solucion_iteracion_2.zip`
-* Dentro de la carpeta descomprimida, crear un ambiente virtual de Python usando `python -m venv myenv` y activar (?).
-* Instalar las dependencias usando el comando `python pip install -r requeriments.txt`.
+* Dentro de la carpeta descomprimida, crear un ambiente virtual de Python usando `python -m venv myenv` y activar.
+* Instalar las dependencias usando el comando `python pip install -r requirements.txt`.
 
 
 ## Carga de datos
