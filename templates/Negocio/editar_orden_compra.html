@@ -15,7 +15,7 @@
             </div>
             <div class="col-8 col-sm-4 order-md-last text-end">
                 <button type="submit" class="btn btn-primary">Actualizar</button>
-                <button class="btn btn-danger">Anular</button>
+                <a href="{% url 'eliminar_orden_compra' orden.id_orden_compra %}" class="btn btn-danger">Anular</a>
                 <button class="btn btn-secondary">?</button>
             </div>
             <div class="col-12 col-sm-8 text-center">

@@ -107,3 +107,9 @@ def editar_orden_compra(request, oc_id):
             'form_huespedes': form_huespedes
         }
     )
+
+
+def eliminar_orden_compra(request, oc_id):
+    orden = OrdenDeCompra.objects.get(id_orden_compra=oc_id)
+    orden.delete()
+    return redirect('listar_ordenes_compra')

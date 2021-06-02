@@ -28,7 +28,7 @@
                             <th>Fecha</th>
                             <th>Huéspedes</th>
                             <th>Tipo de habitaciones</th>
-                            <th>Acciones</th>
+                            <th>&ensp;</th>
                         </tr>
                         {% for orden in lista_oc %}
                         <tr>
@@ -36,12 +36,8 @@
                             <td>{{ orden.cantidad_huespedes }}</td>
                             <td>{{ orden.tipos_habitacion }}</td>
                             <td>
-                                <div class="btn-group" role="group">
-                                    <a 
-                                        href="{% url 'editar_orden_compra' orden.id_orden_compra %}"
-                                        class="btn btn-secondary">Ver</a>
-                                    <a href="#" class="btn btn-warning">Eliminar</a>
-                                </div>
+                                <a href="{% url 'editar_orden_compra' orden.id_orden_compra %}"
+                                    class="btn btn-secondary">Ver</a>
                             </td>
                         </tr>
                         {% endfor %}
