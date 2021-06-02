@@ -37,8 +37,10 @@
                             <td>{{ orden.tipos_habitacion }}</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a href="#" class="btn btn-secondary">Ver</a>
-                                    <a href="#" class="btn btn-secondary">Eliminar</a>
+                                    <a 
+                                        href="{% url 'editar_orden_compra' orden.id_orden_compra %}"
+                                        class="btn btn-secondary">Ver</a>
+                                    <a href="#" class="btn btn-warning">Eliminar</a>
                                 </div>
                             </td>
                         </tr>

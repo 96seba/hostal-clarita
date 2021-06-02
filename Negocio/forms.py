@@ -15,6 +15,17 @@ class FormularioOrdenCompra(forms.ModelForm):
         }
 
 
+class FormularioHuesped(forms.ModelForm):
+    class Meta:
+        model = Huesped
+        fields = [
+            'nombre_huesped'
+        ]
+        labels = {
+            'nombre_huesped': 'Nombre',
+        }
+
+
 FormulariosHuespedes = forms.modelformset_factory(
     Huesped,
     fields=('nombre_huesped',),

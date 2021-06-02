@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}Orden de compra #{{orden.id_orden_compra}}{% endblock titulo %}
+
+{% block pag_actual %}ordenes-compra{% endblock pag_actual %}
+
+{% block contenido %}
+    <article>
+    <form action="" method="post">
+        <div class="row encabezado">
+            <div class="col-4 col-md-2 order-md-first">
+                <a href="{% url 'listar_ordenes_compra' %}" class="btn btn-secondary"><span class="bi-arrow-left"></span></a>
+            </div>
+            <div class="col-8 col-sm-4 order-md-last text-end">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <button class="btn btn-danger">Anular</button>
+                <button class="btn btn-secondary">?</button>
+            </div>
+            <div class="col-12 col-sm-8 text-center">
+                <h2>Orden de compra #{{ orden.id_orden_compra }}</h2>
+            </div>
+        </div>
+        <div class="row">
+        {% csrf_token %}
+            <div class="col-md-6">
+                <h3>Detalle orden</h3>
+                <p>Emitida en: {{ orden.fecha_orden_compra|date:'d-m-Y' }}</p>
+                <div class="form-group d-grid mb-4">
+                    {{ form_orden }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>Huéspedes</h3>
+                {{ form_huespedes.management_form }}
+                {% comment %} {% for huesped in form_huespedes %} {% endcomment %}
+                <div class="form-group d-grid mb-4">
+                    {% comment %} {{ huesped }} {% endcomment %}
+                    {{ form_huespedes }}
+                </div>
+                {% comment %} {% endfor %} {% endcomment %}
+            </div>
+            <!-- <div class="col-12">
+
+            </div> -->
+            <div class="col d-md-none">
+                <div class="form-group d-grid mb-4">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    </article>
+{% endblock contenido %}
