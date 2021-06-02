@@ -75,13 +75,10 @@ article {
     color: var(--secundario);
 }
 
-.encabezado {
+/* .encabezado {
     margin: 24px 0 48px;
 }
-
-.encabezado h1 {
-    margin: 0;
-}
+} */
 
 footer {
     color: var(--gris);

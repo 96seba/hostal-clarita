@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
+from django.forms import inlineformset_factory
 from Usuarios.models import Roles
 from Usuarios.forms import FormularioUsuario, FormularioCliente
 from .models import OrdenDeCompra, Huesped
 from .forms import FormularioOrdenCompra, FormulariosHuespedes
-from django.forms import inlineformset_factory
 
 
 def registro_cliente(request):
@@ -76,26 +76,15 @@ def editar_orden_compra(request, oc_id):
     orden = OrdenDeCompra.objects.get(id_orden_compra=oc_id)
     huespedes = inlineformset_factory(
         OrdenDeCompra, Huesped, fields=('nombre_huesped',), extra=0)
-
     # recibe las actualizaciónes de datos
     if request.method == 'POST':
         datos_orden = FormularioOrdenCompra(request.POST, instance=orden)
         datos_huespedes = huespedes(request.POST, instance=orden)
-
-        if datos_orden.is_valid():
+        if datos_orden.is_valid() and datos_huespedes.is_valid():
             datos_orden.save()
-            # actualizacion_orden = datos_orden.save(commit=False)
-            # actualizacion_orden.save()
-        if datos_huespedes.is_valid():
             datos_huespedes.save()
-        else:
-            print("/////////////pare que hubo un atao/////////////")
-            print(datos_huespedes)
-
-    # else:
     # prellena los formularios con los datos
     form_orden = FormularioOrdenCompra(instance=orden)
-    # form_huespedes = FormulariosHuespedes(queryset=Huesped.objects.filter(id_orden_compra=oc_id))
     form_huespedes = huespedes(instance=orden)
 
     return render(

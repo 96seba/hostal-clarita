@@ -8,14 +8,14 @@
 
 {% block contenido %}
     <article>
-        <div class="row encabezado">
-            <div class="col-6 col-sm-1 order-md-first">
-                <a href="{% url 'index' %}" class="btn btn-secondary"><span class="bi-arrow-left"></span></a>
+        <div class="row">
+            <div class="col-6">
+                <a href="{% url 'index' %}" class="btn btn-secondary"><span class="bi-chevron-left"></span> Volver</a>
             </div>
-            <div class="col-6 col-sm-1 order-md-last text-end">
+            <div class="col-6 text-end">
                 <button class="btn btn-secondary">?</button>
             </div>
-            <div class="col-12 col-sm-10 text-center">
+            <div class="col-12 mt-4 mb-4">
                 <h2>Pedidos para {{proveedor}}</h2>
             </div>
         </div>
