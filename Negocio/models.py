@@ -58,9 +58,9 @@ class Huesped(models.Model):
     nombre_huesped = models.CharField(max_length=60)
     fecha_recepcion = models.DateTimeField(blank=True, null=True)
     nro_habitacion = models.ForeignKey(
-        Habitacion, on_delete=models.PROTECT, db_column='nro_habitacion', blank=True, null=True)
+        Habitacion, on_delete=models.CASCADE, db_column='nro_habitacion', blank=True, null=True)
     id_orden_compra = models.ForeignKey(
-        OrdenDeCompra, on_delete=models.PROTECT, db_column='id_orden_compra')
+        OrdenDeCompra, on_delete=models.CASCADE, db_column='id_orden_compra')
 
     def __str__(self):
         return self.nombre_huesped
