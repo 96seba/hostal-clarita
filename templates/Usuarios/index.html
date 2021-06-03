@@ -38,7 +38,7 @@
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <form method="POST" action="." class="form gap-2 col-sm-10 mx-auto">
+                        <form method="POST" action="{% url 'consulta_proveedores' %}" class="form gap-2 col-sm-10 mx-auto">
                             {% csrf_token %}
                             <h3 class="lead text-center mb-4">Si ustéd es un Proveedor, ingrese su RUT para revisar las Ordenes de Pedido asociadas a usted.</h3>
                             <div class="form-group d-grid mb-4">
@@ -54,5 +54,27 @@
                 </div>
             </div>
         </div>
+        <div id="prov-no-registrado" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Proveedor no registrado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>El RUT que ha ingresado, no se encuentra registrado en nuestra lista de proveedores.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </article>
+    <script>
+        var msgProvNoRegistrado = new bootstrap.Modal(document.getElementById('prov-no-registrado'))
+        {% if prov_no_registrado %}
+        msgProvNoRegistrado.toggle()
+        {% endif %}
+    </script>
 {% endblock contenido %}

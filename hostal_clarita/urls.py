@@ -34,9 +34,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('panel/cliente/', include('Negocio.urls')),
     path('panel/empleado/', include('Servicios.urls')),
-
-    # URLS de los proveedores
-    path('consulta_op/',
-         TemplateView.as_view(template_name='Servicios/consulta_op'),
-         name='consulta_op'),
 ]
