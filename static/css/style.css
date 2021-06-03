@@ -12,29 +12,15 @@ body {
     background-color: var(--gris);
 }
 
-.container {
-    background-color: white;
-    border-radius: 16px;
-    box-shadow: 0 0 8px gray;
-}
-
 header,
 #menu-funciones,
 article {
     margin-bottom: 24px;
 }
 
-/* #logo,
-#menu-usuario,
-#menu-funciones {
-    padding-left: 8px;
-    padding-right: 8px;
-} */
-
 #logo {
     background-color: var(--primario);
     height: 48px;
-    border-radius: 8px 8px 0 0px;
 }
 
 #logo a {
@@ -75,14 +61,26 @@ article {
     color: var(--secundario);
 }
 
-/* .encabezado {
-    margin: 24px 0 48px;
-}
-} */
-
 footer {
     color: var(--gris);
     background-color: var(--negro);
     height: 48px;
-    border-radius: 0 0 8px 8px;
+}
+
+ /* ESTILOS RESPONSIVOS **********************************/
+
+@media screen and (min-width: 576px) {
+    .container {
+        background-color: white;
+        border-radius: 16px;
+        box-shadow: 0 0 8px gray;
+    }
+
+    #logo {
+        border-radius: 8px 8px 0 0px;
+    }
+
+    footer{
+        border-radius: 0 0 8px 8px;
+    }
 }

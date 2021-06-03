@@ -8,40 +8,34 @@
 
 {% block contenido %}
     <article>
-        <div class="row">
-            <div class="col-6">
-                <a href="{% url 'index' %}" class="btn btn-secondary"><span class="bi-chevron-left"></span> Volver</a>
-            </div>
-            <div class="col-6 text-end">
-                <button class="btn btn-secondary">?</button>
-            </div>
-            <div class="col-12 mt-4 mb-4">
+        <form method="post" class="form row">
+            {% csrf_token %}
+            <div class="col-12 mb-4">
                 <h2>Registro de cliente</h2>
             </div>
-        </div>
-        <div class="row">
-            <form method="post" class="form gap-2 col-sm-10 mx-auto">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-12 form-group text-end mb-4">
-                        <button type="submit" class="btn btn-primary">Registrarse</button>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group d-grid mb-4">
-                            {{ datos_usuario }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group d-grid mb-4">
-                            {{ datos_cliente }}
-                        </div>
-                    </div>
-                    <div class="form-group d-md-none d-grid">
-                        <button type="submit" class="btn btn-primary">Registrarse</button>
-                    </div>
+            <div class="col-6 mb-4">
+                <a href="{% url 'index' %}" class="btn btn-warning"><span class="bi-chevron-left"></span> Cancelar</a>
+            </div>
+            <div class="col-6 mb4 text-end">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <button class="btn btn-primary">?</button>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group d-grid mb-4">
+                    {{ datos_usuario }}
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group d-grid mb-4">
+                    {{ datos_cliente }}
+                </div>
+            </div>
+            <div class="col-12 d-md-none d-grid">
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </div>
+        </form>
     </article>
 
 {% endblock contenido %}

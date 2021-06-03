@@ -8,51 +8,42 @@
 
 {% block contenido %}
     <article>
-    <form method="post">
-        <div class="row encabezado">
-            <div class="col-4 col-md-2 order-md-first">
-                <a href="{% url 'listar_ordenes_compra' %}" class="btn btn-secondary"><span class="bi-arrow-left"></span></a>
-            </div>
-            <div class="col-8 col-md-4 order-md-last text-end">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-                <button class="btn btn-secondary">?</button>
-            </div>
-            <div class="col-12 col-md-6 text-center">
+        <form method="post" class="row">
+        {% csrf_token %}
+            <div class="col-12 mb-4">
                 <h2>Ingresar nueva orden</h2>
             </div>
-        </div>
-        <div class="row">
-            <section class="form gap-2 col-sm-10 mx-auto">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group d-grid mb-4">
-                        <h3 class="mb-4">Detalles</h3>
-                            {{ form_oc }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="form-huespedes" class="form-group d-grid mb-4">
-                            {{ form_huespedes.management_form }}
-                            <h3 class="mb-4">Huéspedes</h3>
-                            {% for form_huesped in form_huespedes %}
-                            <div class="form-huesped d-grid mb-4">
-                                {{ form_huesped }}
-                            </div>
-                            {% endfor %}
-                            <button id="add-form" type="button" class="btn btn-secondary mt-2">Añadir otro huesped</button>
-                        </div>
-                    </div>
+            <div class="col-6 mb-4">
+                <a href="{% url 'listar_ordenes_compra' %}" class="btn btn-warning"><span class="bi-chevron-left"></span> Cancelar</a>
+            </div>
+            <div class="col-6 text-end">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button class="btn btn-primary">?</button>
                 </div>
-                <div class="col d-md-none">
-                    <div class="form-group d-grid mb-4">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group d-grid mb-4">
+                <h3 class="mb-4">Detalles</h3>
+                    {{ form_oc }}
                 </div>
-            </section>
-        </div>
-    </form>
+            </div>
+            <div class="col-md-6">
+                <div id="form-huespedes" class="form-group d-grid mb-4">
+                    {{ form_huespedes.management_form }}
+                    <h3 class="mb-4">Huéspedes</h3>
+                    {% for form_huesped in form_huespedes %}
+                    <div class="form-huesped d-grid mb-4">
+                        {{ form_huesped }}
+                    </div>
+                    {% endfor %}
+                    <button id="add-form" type="button" class="btn btn-outline-primary mt-2">Añadir otro huesped</button>
+                </div>
+            </div>
+            <div class="col-12 d-md-none d-grid mb-4">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
     </article>
     <script src="{% static 'js/form_dinamico_huespedes.js' %}"></script>
-
 {% endblock contenido %}

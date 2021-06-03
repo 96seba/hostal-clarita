@@ -8,13 +8,22 @@
 
 {% block contenido %}
     <article>
-        <h1>Bienvenido al panel de {{user.id_rol}}<h1>
-    {% if user.es_administrador %}
-        <!-- contenido del administrador -->
-    {% elif user.es_empleado %}
-        <!-- contenido del empleado -->
-    {% elif user.es_cliente %}
-        <!-- contenido del cliente -->
-    {% endif %}
+        <div class="row">
+            <div class="col-12 mb-4">
+                <h1>Bienvenido al panel de {{user.id_rol}}<h1>
+            </div>
+            <div class="col-12 mb-4 text-end">
+                <button class="btn btn-primary">?</button>
+            </div>
+            <div class="col-12">
+                {% if user.es_administrador %}
+                    <!-- contenido del administrador -->
+                {% elif user.es_empleado %}
+                    <!-- contenido del empleado -->
+                {% elif user.es_cliente %}
+                    <!-- contenido del cliente -->
+                {% endif %}
+            </div>
+        </div>
     </article>
 {% endblock contenido %}

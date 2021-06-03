@@ -9,17 +9,15 @@
 {% block contenido %}
     <article>
         <div class="row">
-            <div class="col-6">
-                <a href="{% url 'index' %}" class="btn btn-secondary"><span class="bi-chevron-left"></span> Volver</a>
-            </div>
-            <div class="col-6 text-end">
-                <button class="btn btn-secondary">?</button>
-            </div>
-            <div class="col-12 mt-4 mb-4">
+            <div class="col-12 mb-4">
                 <h2>Pedidos para {{proveedor}}</h2>
             </div>
-        </div>
-        <div class="row">
+            <div class="col-6 mb-4">
+                <a href="{% url 'index' %}" class="btn btn-primary"><span class="bi-chevron-left"></span> Volver</a>
+            </div>
+            <div class="col-6 mb-4 text-end">
+                <button class="btn btn-primary">?</button>
+            </div>
             <div class="col text-center">
             {% if not lista %}
                 <span class="lead">Hasta el momento hay pedidos enviados.</span>
@@ -29,7 +27,7 @@
                         <tr>
                             <th>Orden de Pedido</th>
                             <th>Total</th>
-                            <th>Acciones</th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,7 +35,7 @@
                         <tr>
                             <td>{{orden.id_orden_pedido}}</td>
                             <td>{{orden.suma_precio}}</td>
-                            <td><button class="btn btn-primary">Ver detalle</button></td>
+                            <td><a href="#" class="btn btn-primary">Detalles</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

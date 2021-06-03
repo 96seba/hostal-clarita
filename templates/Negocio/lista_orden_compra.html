@@ -8,19 +8,19 @@
 
 {% block contenido %}
     <article>
-        <div class="row encabezado">
-            <div class="col-12 col-sm-6 order-md-last text-end">
-                <a href="{% url 'registro_orden_compra' %}" class="btn btn-primary">Generar nueva orden</a>
-                <button class="btn btn-secondary">?</button>
-            </div>
-            <div class="col-12 col-sm-6 text-center">
+        <div class="row">
+            <div class="col-12 mb-4">
                 <h2>Lista de órdenes</h2>
             </div>
-        </div>
-        <div class="row">
+            <div class="col-6 mb-4">
+                <a href="{% url 'registro_orden_compra' %}" class="btn btn-primary">Generar nueva orden</a>
+            </div>
+            <div class="col-6 mb-4 text-end">
+                <button class="btn btn-primary">?</button>
+            </div>
             <div class="col-12 text-center">
                 {% if not lista_oc %}
-                <span class="lead">Actualmente, no hay órdenes de compra.</span>
+                <span class="lead pt-5 pb-5">Actualmente, no hay órdenes de compra.</span>
                 {% else %}
                 <table class="table align-middle table-bordered table-hover">
                     <tbody>
@@ -37,7 +37,7 @@
                             <td>{{ orden.tipos_habitacion }}</td>
                             <td>
                                 <a href="{% url 'editar_orden_compra' orden.id_orden_compra %}"
-                                    class="btn btn-secondary">Ver</a>
+                                    class="btn btn-secondary">Detalles</a>
                             </td>
                         </tr>
                         {% endfor %}
