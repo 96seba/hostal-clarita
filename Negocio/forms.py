@@ -29,6 +29,8 @@ class FormularioHuesped(forms.ModelForm):
 FormulariosHuespedes = forms.modelformset_factory(
     Huesped,
     fields=('nombre_huesped',),
-    extra=1,
-    labels={'nombre_huesped': 'Nombre'}
+    extra=0,
+    labels={'nombre_huesped': 'Nombre'},
+    min_num=1,
+    validate_min=True
 )

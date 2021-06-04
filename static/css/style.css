@@ -12,6 +12,10 @@ body {
     background-color: var(--gris);
 }
 
+.container {
+    background-color: white;
+}
+
 header,
 #menu-funciones,
 article {
@@ -71,7 +75,6 @@ footer {
 
 @media screen and (min-width: 576px) {
     .container {
-        background-color: white;
         border-radius: 16px;
         box-shadow: 0 0 8px gray;
     }
