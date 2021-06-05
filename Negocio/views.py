@@ -30,12 +30,12 @@ def registro_cliente(request):
             nuevo_cliente.save()
             return redirect('index')
     else:
-        datos_usuario = FormularioUsuario()
-        datos_cliente = FormularioCliente()
+        form_usuario = FormularioUsuario()
+        form_cliente = FormularioCliente()
     return render(
         request,
         'Negocio/registro_cliente.html',
-        {'datos_usuario': datos_usuario, 'datos_cliente': datos_cliente})
+        {'form_usuario': form_usuario, 'form_cliente': form_cliente})
 
 
 def listar_ordenes_compra(request):
@@ -89,14 +89,14 @@ def editar_orden_compra(request, oc_id):
             orden_actualizada.save()
             datos_huespedes.save()
     # prellena los formularios con los datos
-    form_orden = FormularioOrdenCompra(instance=orden)
+    form_oc = FormularioOrdenCompra(instance=orden)
     form_huespedes = huespedes(instance=orden)
     return render(
         request,
         'Negocio/editar_orden_compra.html',
         {
             'orden': orden,
-            'form_orden': form_orden,
+            'form_oc': form_oc,
             'form_huespedes': form_huespedes,
             'tiene_factura': orden.tiene_factura(orden.id_orden_compra)
         }

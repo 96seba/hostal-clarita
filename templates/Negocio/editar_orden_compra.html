@@ -24,8 +24,8 @@
                     <button type="submit" {% if tiene_factura %}disabled{% endif %} class="btn btn-primary">Actualizar</button>
                     {% if not tiene_factura %}
                     <a href="{% url 'detalle_factura' orden.id_orden_compra %}" class="btn btn-primary">Generar factura</a>
-                    {% comment %} {% else %}
-                    <a href="{% url 'generar_factura' orden.id_orden_compra %}" class="btn btn-primary">Ver factura</a> {% endcomment %}
+                    {% else %}
+                    <a href="{% url 'detalle_factura' orden.factura.nro_factura %}" class="btn btn-primary">Ver factura</a>
                     {% endif %}
                 </div>
                 <button class="btn btn-primary">?</button>
@@ -35,18 +35,31 @@
             </div>
             <div class="col-md-6">
                 <h3>Detalles</h3>
+                {% for form in form_oc %}
                 <div class="form-group d-grid mb-4">
-                    {{ form_orden }}
+                    {{ form.label_tag }}
+                    {{ form }}
+                    {% if form.errors %}
+                        {{ form.errors }}
+                        {{ form.help_text }}
+                    {% endif %}
                 </div>
+                {% endfor %}
             </div>
             <div class="col-md-6">
                 <h3>Huéspedes</h3>
                 {{ form_huespedes.management_form }}
-                {% comment %} {% for huesped in form_huespedes %} {% endcomment %}
+                {{ form_huespedes.non_field_errors }}
+                {% for form in form_huespedes %}
                 <div class="form-group d-grid mb-4">
-                    {% comment %} {{ huesped }} {% endcomment %}
-                    {{ form_huespedes }}
+                    {{ form.label_tag }}
+                    {{ form }}
+                    {% if form.errors %}
+                        {{ form.errors }}
+                        {{ form.help_text }}
+                    {% endif %}
                 </div>
+                {% endfor %}
             </div>
         </form>
     </article>

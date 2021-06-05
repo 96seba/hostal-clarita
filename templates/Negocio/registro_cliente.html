@@ -23,14 +23,30 @@
                 </div>
             </div>
             <div class="col-6">
+                {{ form_usuario.non_field_errors }}
+                {% for form in form_usuario %}
                 <div class="form-group d-grid mb-4">
-                    {{ datos_usuario }}
+                    {{ form.label_tag }}
+                    {{ form }}
+                    {% if form.errors %}
+                        {{ form.errors }}
+                        {{ form.help_text }}
+                    {% endif %}
                 </div>
+                {% endfor %}
             </div>
             <div class="col-6">
+                {{ form_cliente.non_field_errors }}
+                {% for form in form_cliente %}
                 <div class="form-group d-grid mb-4">
-                    {{ datos_cliente }}
+                    {{ form.label_tag }}
+                    {{ form }}
+                    {% if form.errors %}
+                        {{ form.errors }}
+                        {{ form.help_text }}
+                    {% endif %}
                 </div>
+                {% endfor %}
             </div>
             <div class="col-12 d-md-none d-grid">
                 <button type="submit" class="btn btn-primary">Registrarse</button>

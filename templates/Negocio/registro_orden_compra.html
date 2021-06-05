@@ -23,15 +23,24 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group d-grid mb-4">
                 <h3 class="mb-4">Detalles</h3>
-                    {{ form_oc }}
+                {{ form_oc.non_field_errors }}
+                {% for form in form_oc %}
+                <div class="form-group d-grid mb-4">
+                    {{ form.label_tag }}
+                    {{ form }}
+                    {% if form.errors %}
+                        {{ form.errors }}
+                        {{ form.help_text }}
+                    {% endif %}
                 </div>
+                {% endfor %}
             </div>
             <div class="col-md-6">
-                <div id="form-huespedes" class="form-group d-grid mb-4">
-                    {{ form_huespedes.management_form }}
+                <div id="form-huespedes">
                     <h3 class="mb-4">Huéspedes</h3>
+                    {{ form_huespedes.management_form }}
+                    {{ form_huespedes.non_field_errors }}
                     {% for form_huesped in form_huespedes %}
                     <div class="form-huesped d-grid mb-4">
                         {{ form_huesped }}
