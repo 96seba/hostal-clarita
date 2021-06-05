@@ -13,16 +13,16 @@
             <div class="col-12 mb-4">
                 <h2>Orden de compra #{{ orden.id_orden_compra }}</h2>
             </div>
-            <div class="col-2 col-sm-6 mb-4">
+            <div class="col-2 col-md-4 mb-4">
                 <a href="{% url 'listar_ordenes_compra' %}" class="btn btn-primary">
                     <span class="bi-chevron-left"></span>
-                    <span class="d-none d-sm-inline"> Volver</span>
+                    <span class="d-none d-md-inline"> Volver</span>
                 </a>
             </div>
-            <div class="col-10 col-sm-6 mb-4 text-end">
+            <div class="col-10 col-md-8 mb-4 text-end">
                 <div class="btn-group">
                     <button type="submit" class="btn btn-primary">Actualizar</button>
-                    <a href="{% url 'eliminar_orden_compra' orden.id_orden_compra %}" onclick="return confirm('¿Confirma eliminación de esta orden? Esta acción no se puede deshacer')" class="btn btn-danger">Eliminar orden</a>
+                    <a href="{% url 'generar_factura' orden.id_orden_compra %}" class="btn btn-primary">Generar factura</a>
                 </div>
                 <button class="btn btn-primary">?</button>
             </div>

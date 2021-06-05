@@ -13,36 +13,33 @@
                 <h2>Detalle de factura</h2>
             </div>
             <div class="col-2 col-md-6 mb-4">
-                <a href="{% url 'lista_facturas' %}" class="btn btn-primary">
+                <a href="{% url 'listar_facturas' %}" class="btn btn-primary">
                     <span class="bi-chevron-left"></span>
                     <span class="d-none d-sm-inline"> Volver</span>
                 </a>
             </div>
             <div class="col-10 col-sm-6 mb-4 text-end">
-                <a href="#" class="btn btn-warning">Anular</a>
-                <div class="btn-group">
-                    <button class="btn btn-primary">Imprimir</button>
-                    <button class="btn btn-primary">?</button>
-                </div>
+                <!-- <button class="btn btn-primary">Imprimir</button> -->
+                <button class="btn btn-primary">?</button>
             </div>
             <div class="col-12">
                 <table class="table align-middle table-bordered table-hover">
                     <tbody>
                         <tr>
                             <th>Empresa</th>
-                            <td>Superpollo SA</td>
+                            <td>{{ factura.id_orden_compra.rut_cliente }}</td>
                         </tr>
                         <tr>
                             <th>RUT</th>
-                            <td>55.345.574-2</td>
+                            <td>{{ factura.id_orden_compra.rut_cliente.rut_cliente }}</td>
                         </tr>
                         <tr>
                             <th>Número de factura</th>
-                            <td>00000023</td>
+                            <td>{{ factura.nro_factura }}</td>
                         </tr>
                         <tr>
-                            <th>Fecha</th>
-                            <td>25/05/2021</td>
+                            <th>Fecha de orden de compra</th>
+                            <td>{{ factura.id_orden_compra.fecha_orden_compra|date:'d-m-Y' }}</td>
                         </tr>
                     </tbody>
                 </table>

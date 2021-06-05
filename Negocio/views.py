@@ -1,9 +1,17 @@
 from django.shortcuts import render, redirect
 from django.forms import inlineformset_factory
+from django.core.exceptions import ObjectDoesNotExist
 from Usuarios.models import Roles
 from Usuarios.forms import FormularioUsuario, FormularioCliente
-from .models import OrdenDeCompra, Huesped
+from .models import OrdenDeCompra, Huesped, Factura
 from .forms import FormularioOrdenCompra, FormulariosHuespedes
+
+
+PRECIO_HABITACION = [
+    ('individual', 12990),
+    ('doble', 15990),
+    ('matrimonial', 19990),
+]
 
 
 def registro_cliente(request):
@@ -98,3 +106,41 @@ def eliminar_orden_compra(request, oc_id):
     orden = OrdenDeCompra.objects.get(id_orden_compra=oc_id)
     orden.delete()
     return redirect('listar_ordenes_compra')
+
+
+def generar_factura(request, oc_id):
+    orden = OrdenDeCompra.objects.get(id_orden_compra=oc_id)
+    precio_habitacion = 0
+    for habitacion in PRECIO_HABITACION:
+        if habitacion[0] == orden.tipos_habitacion:
+            precio_habitacion = habitacion[1]
+    total = orden.cantidad_huespedes * precio_habitacion
+    nueva_factura = Factura(id_orden_compra=orden, total=total, estado_factura=1)
+    nueva_factura.save()
+    return redirect('listar_facturas')
+
+
+def listar_facturas(request):
+    rut_cliente = request.user.cliente.rut_cliente
+    ordenes_compra = OrdenDeCompra.objects.filter(rut_cliente=rut_cliente)
+    facturas = []
+    ordenes_no_facturadas = []
+    for orden in ordenes_compra:
+        try:
+            factura = Factura.objects.get(id_orden_compra=orden.id_orden_compra)
+            facturas.append(factura)
+        except ObjectDoesNotExist:
+            ordenes_no_facturadas.append(orden)
+    return render(request, 'Negocio/lista_facturas.html', {'facturas': facturas})
+
+
+def detalle_factura(request, id_factura):
+    factura = Factura.objects.get(nro_factura=id_factura)
+    return render(request, 'Negocio/detalle_factura.html', {'factura': factura})
+
+
+def anular_factura(request, id_factura):
+    # recuperar factura
+    # eliminar factura
+    # redirigir a lista
+    pass

@@ -23,19 +23,30 @@
                 <table class="table align-middle table-bordered table-hover">
                     <tbody>
                         <tr>
-                            <th>Fecha</th>
+                            <th class="d-none d-sm-table-cell">Fecha</th>
                             <th>Huéspedes</th>
                             <th>Tipo de habitaciones</th>
                             <th>&ensp;</th>
                         </tr>
                         {% for orden in lista_oc %}
                         <tr>
-                            <td>{{ orden.fecha_orden_compra|date:'d-m-Y' }}</td>
+                            <td class="d-none d-sm-table-cell">{{ orden.fecha_orden_compra|date:'d-m-Y' }}</td>
                             <td>{{ orden.cantidad_huespedes }}</td>
-                            <td>{{ orden.tipos_habitacion }}</td>
+                            <td>{{ orden.get_tipos_habitacion_display }}</td>
                             <td>
-                                <a href="{% url 'editar_orden_compra' orden.id_orden_compra %}"
-                                    class="btn btn-secondary">Detalles</a>
+                                <div class="btn-group">
+                                    <a href="{% url 'editar_orden_compra' orden.id_orden_compra %}"
+                                        class="btn btn-primary">
+                                        <span class="d-md-none bi-eye-fill"></span>
+                                        <span class="d-none d-md-inline">Detalles</span>
+                                    </a>
+                                    <a href="{% url 'eliminar_orden_compra' orden.id_orden_compra %}"
+                                        onclick="return confirm('¿Confirma eliminación de esta orden? Esta acción no se puede deshacer')"
+                                        class="btn btn-danger">
+                                        <span class="d-md-none bi-trash-fill"></span>
+                                        <span class="d-none d-md-inline">Eliminar</span>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                         {% endfor %}

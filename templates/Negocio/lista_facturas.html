@@ -15,39 +15,34 @@
             <div class="col-12 mb-4 text-end">
                 <button class="btn btn-primary">?</button>
             </div>
-            <div class="col-12">
+            <div class="col-12 text-center">
+            {% if not facturas %}
+                <span class="lead pt-5 pb-5">Actualmente, no hay facturas emitidas.</span>
+            {% else %}
                 <table class="table align-middle table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Fecha</th>
-                            <th>Opciones</th>
+                            <th># de orden</th>
+                            <th>Total</th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for factura in facturas %}
                         <tr>
-                            <td>1</td>
-                            <td>20/03/2021</td>
+                            <td>{{ factura.id_orden_compra }}</td>
+                            <td>&dollar;{{ factura.total }}</td>
                             <td>
-                                <button class="btn btn-primary">Ver</button>
+                                <div class="btn-group">
+                                    <a href="{% url 'detalle_factura' factura.nro_factura %}" class="btn btn-primary">Detalles</a>
+                                    <a href="{% url 'anular_factura' factura.nro_factura %}" class="btn btn-warning">Anular</a>
+                                </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>03/04/2021</td>
-                            <td>
-                                <button class="btn btn-primary">Ver</button>
-                            </td>
-                            <tr>
-                                <td>1</td>
-                                <td>20/03/2021</td>
-                                <td>
-                                    <button class="btn btn-warning">Generar</button>
-                                </td>
-                            </tr>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
+            {% endif %}
             </div>
         </div>
     </article>
