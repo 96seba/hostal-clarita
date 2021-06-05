@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}Nueva orden de compra{% endblock titulo %}
+
+{% block pag_actual %}ordenes-compra{% endblock pag_actual %}
+
+{% block contenido %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Listar ordenes</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Ingresar orden de pedido</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_ordenes' %}">Listar órdenes de pedido</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Editar órdenes de pedido</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+
+    <h2>Lista de ordenes de pedido</h2>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Precio</th>
+                <th>Fecha</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for o in orden_pedido %}
+            <tr>
+                <td>{{ o.id_orden_pedido }}</td>
+                <td>{{ o.suma_precio }}</td>
+                <td>{{ o.enviada }}</td>
+                <td>
+                    <a href="{% url 'borrar_orden' o.id_orden_pedido %}"
+                    onclick="return confirm('¿Confirma eliminación de esta orden? Esta acción no se puede deshacer')"
+                    class="btn btn-danger">
+                    <span class="d-md-none bi-trash-fill"></span>
+                    <span class="d-none d-md-inline">Eliminar</span>
+                </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+</body>
+
+</html>
+
+
+{% endblock contenido %}
