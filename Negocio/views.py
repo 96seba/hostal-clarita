@@ -10,7 +10,7 @@ from .forms import FormularioOrdenCompra, FormulariosHuespedes
 PRECIO_HABITACION = [
     ('individual', 12990),
     ('doble', 15990),
-    ('matrimonial', 19990),
+    ('ejecutiva', 19990),
 ]
 
 
@@ -97,7 +97,8 @@ def editar_orden_compra(request, oc_id):
         {
             'orden': orden,
             'form_orden': form_orden,
-            'form_huespedes': form_huespedes
+            'form_huespedes': form_huespedes,
+            'tiene_factura': orden.tiene_factura(orden.id_orden_compra)
         }
     )
 
@@ -136,11 +137,20 @@ def listar_facturas(request):
 
 def detalle_factura(request, id_factura):
     factura = Factura.objects.get(nro_factura=id_factura)
-    return render(request, 'Negocio/detalle_factura.html', {'factura': factura})
+    huespedes = factura.id_orden_compra.obtener_huespedes(
+        factura.id_orden_compra.id_orden_compra)
+    ###
+    for habitacion in PRECIO_HABITACION:
+        if habitacion[0] == factura.id_orden_compra.tipos_habitacion:
+            precio_habitacion = habitacion[1]
+    return render(
+        request,
+        'Negocio/detalle_factura.html',
+        {'factura': factura, 'huespedes': huespedes, 'precio_habitacion': precio_habitacion}
+    )
 
 
 def anular_factura(request, id_factura):
-    # recuperar factura
-    # eliminar factura
-    # redirigir a lista
-    pass
+    factura = Factura.objects.get(nro_factura=id_factura)
+    factura.delete()
+    return redirect('listar_facturas')

@@ -15,10 +15,10 @@
             <div class="col-2 col-md-6 mb-4">
                 <a href="{% url 'listar_facturas' %}" class="btn btn-primary">
                     <span class="bi-chevron-left"></span>
-                    <span class="d-none d-sm-inline"> Volver</span>
+                    <span class="d-none d-md-inline"> Volver</span>
                 </a>
             </div>
-            <div class="col-10 col-sm-6 mb-4 text-end">
+            <div class="col-10 col-md-6 mb-4 text-end">
                 <!-- <button class="btn btn-primary">Imprimir</button> -->
                 <button class="btn btn-primary">?</button>
             </div>
@@ -45,43 +45,38 @@
                 </table>
             </div>
             <div class="col-12">
-                <h2>Detalle de huéspedes</h2>
+                <h2>Huéspedes</h2>
 
                 <table class="table align-middle table-bordered table-hover .table-responsive">
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Habitación</th>
+                            <th>Tipo de habitación</th>
                             <th>Valor</th>
-                            <th>Días</th>
-                            <th>Total</th>
+                            <!-- <th>Días</th> -->
+                            <!-- <th>Total</th> -->
                         </tr>
                     </thead>
                     <tbody>
+                        {% for huesped in huespedes %}
                         <tr>
-                            <td>Marta Martínez</td>
-                            <td>Simple (21)</td>
-                            <td>$17.999</td>
-                            <td>3</td>
-                            <td>$53.997</td>
+                            <td>{{ huesped.nombre_huesped }}</td>
+                            <td>{{ factura.id_orden_compra.get_tipos_habitacion_display }}</td>
+                            <td>${{ precio_habitacion }}</td>
+                            <!-- <td>3</td> -->
+                            <!-- <td>$53.997</td> -->
                         </tr>
-                        <tr>
-                            <td>Pedro Pérez</td>
-                            <td>Simple (13)</td>
-                            <td>$17.999</td>
-                            <td>3</td>
-                            <td>$53.997</td>
-                        </tr>
-                        <tr>
-                            <td>Gonzalo González</td>
-                            <td>Simple (15)</td>
-                            <td>$17.999</td>
-                            <td>3</td>
-                            <td>$53.997</td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="2" class="text-end">Total:</th>
+                            <th>${{ factura.total }}</th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
+            <!--
             <div class="col-12">
                 <h2>Servicios contratados</h2>
 
@@ -107,6 +102,7 @@
                     </tbody>
                 </table>
             </div>
+            -->
         </div>
     </article>
 {% endblock contenido %}

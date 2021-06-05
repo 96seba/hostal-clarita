@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from django.utils.timezone import now as fecha_hora_actual
+from django.core.exceptions import ObjectDoesNotExist
 from Usuarios.models import Cliente
 
 
@@ -19,7 +20,7 @@ ESTADO_HABITACION = [
 TIPO_HABITACION = [
     ('individual', 'Individual'),
     ('doble', 'Doble'),
-    ('matrimonial', 'Matrimonial'),
+    ('ejecutiva', 'Ejecutiva'),
 ]
 
 
@@ -45,6 +46,17 @@ class OrdenDeCompra(models.Model):
     tipos_habitacion = models.CharField(max_length=50, choices=TIPO_HABITACION)
     rut_cliente = models.ForeignKey(
         Cliente, on_delete=models.PROTECT, db_column='rut_cliente')
+
+    def obtener_huespedes(self, id_oc):
+        lista_huespedes = Huesped.objects.filter(id_orden_compra=id_oc)
+        return lista_huespedes
+
+    def tiene_factura(self, id_oc):
+        try:
+            if Factura.objects.get(id_orden_compra=id_oc):
+                return True
+        except ObjectDoesNotExist:
+            return False
 
     def __str__(self):
         return str(self.id_orden_compra)

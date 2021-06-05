@@ -21,8 +21,12 @@
             </div>
             <div class="col-10 col-md-8 mb-4 text-end">
                 <div class="btn-group">
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                    <a href="{% url 'generar_factura' orden.id_orden_compra %}" class="btn btn-primary">Generar factura</a>
+                    <button type="submit" {% if tiene_factura %}disabled{% endif %} class="btn btn-primary">Actualizar</button>
+                    {% if not tiene_factura %}
+                    <a href="{% url 'detalle_factura' orden.id_orden_compra %}" class="btn btn-primary">Generar factura</a>
+                    {% comment %} {% else %}
+                    <a href="{% url 'generar_factura' orden.id_orden_compra %}" class="btn btn-primary">Ver factura</a> {% endcomment %}
+                    {% endif %}
                 </div>
                 <button class="btn btn-primary">?</button>
             </div>
