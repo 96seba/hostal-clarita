@@ -11,3 +11,8 @@ def borrar_orden(request, id_orden_pedido):
     borrar = OrdenPedido.objects.get(id_orden_pedido=id_orden_pedido)
     borrar.delete()
     return redirect('listar_ordenes')
+
+
+def cmb_ordenes(request):
+    orden_pedido = OrdenPedido.objects.all()
+    return render(request, "Servicios/recepcion_productos.html", {'orden_pedido': orden_pedido})
