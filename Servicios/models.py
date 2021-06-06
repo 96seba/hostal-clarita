@@ -8,6 +8,7 @@
 # rename db_table values or field names.
 from django.db import models
 from Usuarios.models import Empleado
+from django.utils.timezone import now as fecha_hora_actual
 
 
 class FamiliaProducto(models.Model):
@@ -94,7 +95,7 @@ class Producto(models.Model):
 class OrdenPedido(models.Model):
     id_orden_pedido = models.AutoField(primary_key=True)
     suma_precio = models.IntegerField()
-    enviada = models.BooleanField(default=0)
+    enviada = models.BooleanField(default=fecha_hora_actual)
     fecha_recepcion = models.DateTimeField(blank=True, null=True)
     observaciones = models.CharField(max_length=100, blank=True, null=True)
     rut_proveedor = models.ForeignKey(

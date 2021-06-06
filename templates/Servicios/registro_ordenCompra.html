@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}Recepcion productos{% endblock titulo %}
+
+{% block pag_actual %}recepcion-productos{% endblock pag_actual %}
+
+{% block contenido %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'generar_ordenPedido' %}">Ingresar orden de pedido</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listar_ordenes' %}">Listar órdenes de pedido</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Editar órdenes de pedido</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="d-flex" style="align-content: end;"> 
+    <button class="btn btn-primary" style="margin-bottom: 10px;" type="submit">Registrar</button>
+    </div>  
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock contenido %}
