@@ -39,7 +39,7 @@
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         {% for o in orden_pedido %}
-        <a class="dropdown-item" href="#">{{ o.id_orden_pedido }}</a>
+        <a class="dropdown-item" href="{% url 'listar_detalle_pedido' o.id_orden_pedido %}">{{ o.id_orden_pedido }}</a>
         {% endfor %}
       </div>
     </div>

@@ -1,6 +1,6 @@
 from Servicios.models import DetalleOrdenPedido, OrdenPedido
 from django.shortcuts import redirect, render
-from .forms import (DetallesForm, OrdenPedidoForm)
+from .forms import (DetallesForm, OrdenPedidoForm, FormularioServiciosComedor, ServiciosComedor, FormularioPlatos)
 
 
 def listar_ordenes(request):
@@ -42,3 +42,36 @@ def generar_ordenPedido(request):
         request,
         'Servicios/registro_ordenCompra.html',
         {'form_op': form_op, 'form_detalle': form_detalle})
+
+
+def listar_detalle_pedido(request, id_orden_pedido):
+    detalle_pedido = DetalleOrdenPedido.objects.filter(id_orden_pedido__id_orden_pedido=id_orden_pedido)
+    return render(request, "Servicios/listar_detalle_pedidos.html", {'detalle_pedido': detalle_pedido})
+
+
+def registro_servicio_comedor(request):
+    if request.method == 'POST':
+        datos_sc = FormularioServiciosComedor(request.POST)
+        if datos_sc.is_valid():
+            datos_sc.save()
+        return redirect('listar_servicio_comedor')
+    else:
+        datos_sc=FormularioServiciosComedor()
+    return render(request, "Servicios/registro_servicios_comedor.html", {'datos_sc': datos_sc})
+
+
+def listar_servicio_comedor(request):
+    servicio_comedor = ServiciosComedor.objects.all()
+    return render(request, "Servicios/listar_servicios_comedor.html", {'servicio_comedor': servicio_comedor})
+
+
+def registro_plato(request):
+    if request.method == 'POST':
+        datos_pl = FormularioPlatos(request.POST)
+        if datos_pl.is_valid():
+            datos_pl.save()
+        return redirect('listar_servicio_comedor')
+    
+    else:
+        datos_pl=FormularioPlatos()
+    return render(request, "Servicios/registro_plato.html", {'datos_pl': datos_pl })
