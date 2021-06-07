@@ -28,55 +28,63 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Ingresar orden de pedido</a>
+                    <a class="nav-link" href="{% url 'generar_ordenPedido' %}">Ingresar orden de pedido</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'listar_ordenes' %}">Listar órdenes de pedido</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Editar órdenes de pedido</a>
                 </li>
             </ul>
 
         </div>
     </nav>
 
+    <h2 style="margin-top: 10px;">Lista de ordenes de pedido</h2>
 
 
-    <h2>Lista de ordenes de pedido</h2>
 
+    <tbody>
+        {% if not orden_pedido %}
+        <hr class="w-75" style="height: 4px;">
+        <h3 style="font-style: italic;">No hay ordenes de pedidos</h3>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Precio</th>
-                <th>Fecha</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-
-        <tbody>
+        {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Precio</th>
+                    <th>Fecha Recepcion</th>
+                    <th>Rut proveedor</th>
+                    <th>Empleado</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
             {% for o in orden_pedido %}
             <tr>
                 <td>{{ o.id_orden_pedido }}</td>
                 <td>{{ o.suma_precio }}</td>
-                <td>{{ o.enviada }}</td>
+                <td>
+                    {% if o.fecha_recepcion == None %}
+                    Aun no llega
+                    {% else %}
+                    o.fecha_recepcion
+                    {% endif %}
+                </td>
+                <td>{{ o.rut_proveedor }}</td>
+                <td>{{ o.id_empleado }}</td>
                 <td>
                     <a href="{% url 'borrar_orden' o.id_orden_pedido %}"
-                    onclick="return confirm('¿Confirma eliminación de esta orden? Esta acción no se puede deshacer')"
-                    class="btn btn-danger">
-                    <span class="d-md-none bi-trash-fill"></span>
-                    <span class="d-none d-md-inline">Eliminar</span>
-                </a>
+                        onclick="return confirm('¿Confirma eliminación de esta orden? Esta acción no se puede deshacer')"
+                        class="btn btn-danger">
+                        <span class="d-md-none bi-trash-fill"></span>
+                        <span class="d-none d-md-inline">Eliminar</span>
+                    </a>
                 </td>
             </tr>
             {% endfor %}
-        </tbody>
+    </tbody>
     </table>
-
-
-
+    {% endif %}
 </body>
 
 </html>
