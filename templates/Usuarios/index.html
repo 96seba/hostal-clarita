@@ -5,6 +5,7 @@
 {% block titulo %} Acceso a usuarios {% endblock titulo %}
 
 {% block contenido %}
+    <script src="{% static 'js/validador_rut.js' %}"></script>
     <article class="row justify-content-center">
         <div class="col-md-10 col-lg-8">
             <div class="accordion" id="accordionExample">
@@ -43,7 +44,7 @@
                             <h3 class="lead text-center mb-4">Si ustéd es un Proveedor, ingrese su RUT para revisar las Ordenes de Pedido asociadas a usted.</h3>
                             <div class="form-group d-grid mb-4">
                                 <label for="rut_proveedor">RUT:</label>
-                                <input name="rut_proveedor" class="form-control" type="text">
+                                <input name="rut_proveedor" class="form-control" type="text" oninput="checkRut(this)" placeholder="Ej.: 12345678-K">
                             </div>
                             <div class="form-group d-grid mb-4">
                                 <button name="consulta_proveedor" value="consulta_proveedor" type="submit" class="btn btn-primary btn-block">Enviar</button>
