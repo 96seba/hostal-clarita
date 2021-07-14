@@ -13,7 +13,7 @@
                 <h1>Bienvenido al panel de {{user.id_rol}}<h1>
             </div>
             <div class="col-12 mb-4 text-end">
-                <button class="btn btn-primary">?</button>
+                <button class="btn btn-primary" onclick="toggleManualUsuario()">?</button>
             </div>
             <div class="col-12">
                 {% if user.es_administrador %}
@@ -27,3 +27,10 @@
         </div>
     </article>
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Panel de usuario</h2>
+    <p>Este es el módulo de inicio para todos los usuarios del sistema, desde el se puede acceder a todas las funcionalidades correspondientes a cada perfil.</p>
+    <p>En la cabecera de la página, a la izquierda se especifica el perfil del usuario actualmente autenticado. A la derecha, el enlace <b>Mi cuenta</b> permite ver y modificar los detalles de la cuenta de usuario, y el enlace <b>Salir</b> permite cerrar la sesión actualmente iniciada.</p>
+    <p>Inmediatamente abajo, se muestra un menú de navegación que permite cambiar entre los distintos módulos.</p>
+{% endblock manual %}

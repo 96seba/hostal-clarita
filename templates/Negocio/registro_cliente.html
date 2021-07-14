@@ -20,7 +20,7 @@
             <div class="col-6 mb4 text-end">
                 <div class="btn-group">
                     <button type="submit" class="btn btn-primary">Registrarse</button>
-                    <button class="btn btn-primary">?</button>
+                    <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
                 </div>
             </div>
             <div class="col-6">
@@ -54,5 +54,12 @@
             </div>
         </form>
     </article>
-
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Registro de cliente</h2>
+    <p>Este módulo permite registrarse como cliente, para posteriormente poder contratar nuestros servicios. Recuerde que Hostal Doña Clarita ofrece servicios solo a empresas, no a personas naturales.</p>
+    <p>Para registrarse se deben llenar todos los campos del formulario.</p>
+    <p>Presionando el botón <button class="btn btn-sm btn-primary">Registrarse</button> se enviarán los datos del formulario y, de estar correctos, se registrará en el sistema.</p>
+    <p>Presionando el botón <button class="btn btn-sm btn-warning">Cancelar</button> volverá a la página de inicio.</p>
+{% endblock manual %}

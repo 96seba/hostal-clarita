@@ -16,7 +16,7 @@
                 <a href="{% url 'index' %}" class="btn btn-primary"><span class="bi-chevron-left"></span> Volver</a>
             </div>
             <div class="col-6 mb-4 text-end">
-                <button class="btn btn-primary">?</button>
+                <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
             </div>
             <div class="col text-center">
             {% if not lista %}
@@ -45,3 +45,11 @@
         </div>
     </article>
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Consulta órdenes de pedido</h2>
+    <p>En este módulo, los proveedores registrados pueden revisar todas las órdenes de pedido solicitadas a ellos.</p>
+    <p>La tabla muestra la lista de las órdenes, detallandose el número de Orden de Pedido y el saldo total de la orden.</p>
+    <p>Presionando el botón <button class="btn btn-primary btn-sm">Detalles</button> permite abrir el detalle de la orden correspondiente.</p>
+    <p>Presionando el botón <button class="btn btn-primary btn-sm">Volver</button> permite retornar al módulo de inicio de sesión y consulta.</p>
+{% endblock manual %}
