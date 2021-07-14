@@ -20,6 +20,9 @@
 </head>
 <body>
     <div class="container">
+
+        <!-- Inicio de la página visible -->
+
         <header class="mt-sm-4">
             <div id="logo" class="row">
                 <div class="col-12 d-flex align-items-center">
@@ -107,6 +110,29 @@
                 <span>&copy; Hostal Doña clarita.</span>
             </div>
         </footer>
+
+        <!-- Fin de la página visible -->
+        <!-- Inicio del manual de usuario -->
+
+        <div id="manual-usuario" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Manual de usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% block manual %}{% endblock manual %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fin del manual de usuario -->
+
     </div>
     <script>
         var pag_actual = "{% block pag_actual %}{% endblock pag_actual %}";

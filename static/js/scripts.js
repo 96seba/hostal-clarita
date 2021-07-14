@@ -16,3 +16,9 @@ function toggleMenuUsuario() {
     menu.classList.add("show");
   }
 }
+
+// Muestra el manual de usuario correspondiente a la página actual
+function toggleManualUsuario() {
+  let modalAyuda = new bootstrap.Modal(document.getElementById('manual-usuario'));
+  modalAyuda.toggle();
+}
