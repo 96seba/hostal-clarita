@@ -23,7 +23,7 @@ class FormularioCliente(forms.ModelForm):
             'telefono': 'Teléfono',
         }
         widgets = {
-            'rut_cliente': forms.TextInput(),
+            'rut_cliente': forms.TextInput(attrs={'placeholder': 'Ej.: 12345678-K', 'oninput': 'checkRut(this)'}),
             'nombre_empresa': forms.TextInput(),
-            'telefono': forms.TextInput(),
+            'telefono': forms.TextInput(attrs={'placeholder': 'Ej.: 987654321'}),
         }

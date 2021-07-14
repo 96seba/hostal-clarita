@@ -7,6 +7,7 @@
 {% endblock titulo %}
 
 {% block contenido %}
+    <script src="{% static 'js/validador_rut.js' %}"></script>
     <article>
         <form method="post" class="form row">
             {% csrf_token %}
