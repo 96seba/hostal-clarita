@@ -5,8 +5,10 @@
 {% block titulo %} Acceso a usuarios {% endblock titulo %}
 
 {% block contenido %}
-    <script src="{% static 'js/validador_rut.js' %}"></script>
     <article class="row justify-content-center">
+        <div class="col-md-10 col-lg-8 text-end mb-4">
+            <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
+        </div>
         <div class="col-md-10 col-lg-8">
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
@@ -39,6 +41,7 @@
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
+                        <script src="{% static 'js/validador_rut.js' %}"></script>
                         <form method="POST" action="{% url 'consulta_proveedores' %}" class="form gap-2 col-sm-10 mx-auto">
                             {% csrf_token %}
                             <h3 class="lead text-center mb-4">Si ustéd es un Proveedor, ingrese su RUT para revisar las Ordenes de Pedido asociadas a usted.</h3>
@@ -79,3 +82,14 @@
         {% endif %}
     </script>
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Acceso a usuarios y proveedores</h2>
+    <p>Este módulo permite a los usuarios del sistema autenticarse para hacer uso de él.</p>
+    <h3>Clientes</h3>
+    <p>Debe tener una cuenta de usuario para contratar nuestros servicios, si no cuenta con una puede crearla cliqueando en el enlace que se proporciona. Recuerde que solo ofrecemos servicios para empresas, no a personas naturales.</p>
+    <h3>Empleados</h3>
+    <p>Debe tener una cuenta de usuario creada por el administrador para poder iniciar sesión.</p>
+    <h3>Proveedores</h3>
+    <p>Todos los proveedores con los que Hostal Doña Clarita tiene contrato, pueden revisar las órdenes de pedido solicitadas solamente ingresando el RUT de su empresa.</p>
+{% endblock manual %}
