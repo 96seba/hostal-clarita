@@ -14,7 +14,7 @@
             </div>
             <div class="col-12 mb-4 text-end">
                 <a href="{% url 'registro_orden_compra' %}" class="btn btn-primary">Generar nueva orden</a>
-                <button class="btn btn-primary">?</button>
+                <button class="btn btn-primary" onclick="toggleManualUsuario()">?</button>
             </div>
             <div class="col-12 text-center">
                 {% if not lista_oc %}
@@ -57,3 +57,12 @@
         </div>
     </article>
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Lista de órdenes de compra</h2>
+    <p>Este módulo permite listar, eliminar y generar nuevas órdenes de compra.</p>
+    <p>La tabla lista las órdenes de compra ya generadas, orenadas desde la más reciente a la más antigua.</p>
+    <p>El botón <button class="btn btn-primary btn-sm">Generar nueva orden</button> abre el formulario para crear una nueva orden de compra.</p>
+    <p>El botón <button class="btn btn-primary btn-sm">Detalle</button> muestra el detalle de la orden seleccionada.</p>
+    <p>El botón <button class="btn btn-danger btn-sm">Eliminar</button> permite eliminar la orden seleccionada. Esta acción no puede deshacerse.</p>
+{% endblock manual %}

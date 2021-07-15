@@ -22,13 +22,13 @@
             <div class="col-10 col-md-8 mb-4 text-end">
                 <div class="btn-group">
                     <button type="submit" {% if tiene_factura %}disabled{% endif %} class="btn btn-primary">Actualizar</button>
-                    {% if not tiene_factura %}
-                    <a href="{% url 'generar_factura' orden.id_orden_compra %}" class="btn btn-primary">Generar factura</a>
-                    {% else %}
+                    {% if tiene_factura %}
                     <a href="{% url 'detalle_factura' orden.factura.nro_factura %}" class="btn btn-primary">Ver factura</a>
+                    {% else %}
+                    <a href="{% url 'generar_factura' orden.id_orden_compra %}" class="btn btn-primary">Generar factura</a>
                     {% endif %}
                 </div>
-                <button class="btn btn-primary">?</button>
+                <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
             </div>
             <div class="col-12">
                 <p class="lead">Fecha de creación: {{ orden.fecha_orden_compra|date:'d-m-Y' }}</p>
@@ -64,3 +64,13 @@
         </form>
     </article>
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Detalle orden de compra</h2>
+    <p>Este modulo permite ver el detalle de una orden de compra, además de actualizarla y generar una factura a partir de ella.</p>
+    <p>El formulario muestra todos los campos de la orden actual, que pueden ser actualizados.</p>
+    <p>El botón <button class="btn btn-primary btn-sm">Actualizar</button> guarda cualquier cambio hecho en alguno de los campos disponibles. No se puede actualizar una orden de compra si ya se generó una factura a partir de ella.</p>
+    <p>El botón <button class="btn btn-primary btn-sm">Generar factura</button> crea una factura a partir de los datos de la actual orden de compra. Tenga en cuenta que si modificó alguno de los campos de la orden de compra, debe presionar el botón <button class="btn btn-primary btn-sm">Actualizar</button> antes de generar la factura.</p>
+    <p>El botón <button class="btn btn-primary btn-sm">Ver factura</button> aparecerá si ya hay una factura generada a partir de la orden actual, permitiendo ver el detalle de esa factura.</p>
+    <p>El botón <button class="btn btn-primary btn-sm">Volver</button> permite retornar a la lista de órdenes de compra.</p>
+{% endblock manual %}

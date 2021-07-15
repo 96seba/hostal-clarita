@@ -13,7 +13,7 @@
                 <h2>Facturas emitidas</h2>
             </div>
             <div class="col-12 mb-4 text-end">
-                <button class="btn btn-primary">?</button>
+                <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
             </div>
             <div class="col-12 text-center">
             {% if not facturas %}
@@ -47,3 +47,11 @@
         </div>
     </article>
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Lista de facturas</h2>
+    <p>Este modulo permite ver todas las facturas emitidas, además de poder abrir el detalle de cada una y anularlas.</p>
+    <p>La tabla muestra las facturas ordenadas desde la más reciente hasta la más antigua.</p>
+    <p>EL botón <button class="btn btn-primary btn-sm">Detalle</button> permite ver la factura completa.</p>
+    <p>El botón <button class="btn btn-warning btn-sm">Anular</button> permite anular la factura seleccionada. Esta acción no se puede deshacer.</p>
+{% endblock manual %}

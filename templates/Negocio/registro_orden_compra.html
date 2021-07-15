@@ -19,7 +19,7 @@
             <div class="col-6 text-end">
                 <div class="btn-group">
                     <button type="submit" class="btn btn-primary">Guardar</button>
-                    <button class="btn btn-primary">?</button>
+                    <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
                 </div>
             </div>
             <div class="col-md-6">
@@ -56,3 +56,11 @@
     </article>
     <script src="{% static 'js/form_dinamico_huespedes.js' %}"></script>
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Ingresar nueva orden de compra</h2>
+    <p>Este módulo permite crear una nueva orden de compra, completando los datos del formulario.</p>
+    <p>El botón <button class="btn btn-outline-primary btn-sm">Añadir otro huesped</button> permite añadir tantos huéspedes como desee.</p>
+    <p>El botón <button class="btn btn-primary btn-sm">Guardar</button> permite almacenar la orden, una vez que todos los campos hayan sido llenados.</p>
+    <p>El botón <button class="btn btn-warning btn-sm">Cancelar</button> permite volver a la lista de órdenes, eliminando cualquier dato ingresado en los campos.</p>
+{% endblock manual %}

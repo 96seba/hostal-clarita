@@ -20,7 +20,7 @@
             </div>
             <div class="col-10 col-md-6 mb-4 text-end">
                 <!-- <button class="btn btn-primary">Imprimir</button> -->
-                <button class="btn btn-primary">?</button>
+                <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
             </div>
             <div class="col-12">
                 <table class="table align-middle table-bordered table-hover">
@@ -106,3 +106,10 @@
         </div>
     </article>
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Detalle de factura</h2>
+    <p>Este módulo permite ver el detalle de cada factura.</p>
+    <p>El detalle está dividido en dos partes, la primera que muestra información general y la segunda el detalle de los huéspedes a alojar.</p>
+    <p>El botón <button class="btn btn-primary btn-sm">Volver</button> permite regresar a la lista de facturas.</p>
+{% endblock manual %}
