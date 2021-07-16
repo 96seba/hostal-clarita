@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Consulta de pedidos para {{proveedor}}
+{% endblock titulo %}
+
+{% block contenido %}
+    <article>
+        <div class="row">
+            <div class="col-12 mb-4">
+                <h2>Pedido # {{orden_pedido.id_orden_pedido}} para {{orden_pedido.rut_proveedor}}</h2>
+            </div>
+            <div class="col-6 mb-4">
+                <form action="{% url 'consulta_proveedores' %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary" type="submit" name="rut_proveedor" value="{{orden_pedido.rut_proveedor.rut_proveedor}}"><span class="bi-chevron-left"></span> Volver</button>
+                </form>
+            </div>
+            <div class="col-6 mb-4 text-end">
+                <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
+            </div>
+            <div class="col">
+                <table class="table align-middle table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th class="text-end">Precio</th>
+                            <th class="text-center">Cantidad</th>
+                            <th class="text-end">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in productos %}
+                        <tr>
+                            <td>{{p.id_producto}}</td>
+                            <td class="text-end">{{p.precio_individual}}</td>
+                            <td class="text-center">{{p.cantidad}}</td>
+                            <td class="text-end">{{p.precio_total}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-end">Total</td>
+                            <td class="text-end"><b>{{orden_pedido.suma_precio}}</b></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </article>
+{% endblock contenido %}
+
+{% block manual %}
+    <h2>Detalle orden de pedido</h2>
+    <p>En este módulo...</p>
+{% endblock manual %}

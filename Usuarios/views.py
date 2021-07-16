@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from Servicios.models import Proveedor
+from Servicios.models import Proveedor, OrdenPedido, DetalleOrdenPedido
 from django.core.exceptions import ObjectDoesNotExist
 
 
@@ -24,3 +24,9 @@ def consulta_proveedores(request):
             return render(request, 'Usuarios/index.html', {'prov_no_registrado': True})
     else:
         return redirect('index')
+
+
+def detalle_op(request, id_op):
+    orden_pedido = OrdenPedido.objects.get(id_orden_pedido=id_op)
+    productos = DetalleOrdenPedido.objects.filter(id_orden_pedido=id_op)
+    return render(request, 'Usuarios/detalle_op.html', {'orden_pedido': orden_pedido, 'productos': productos})

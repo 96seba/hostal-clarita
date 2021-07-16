@@ -35,7 +35,7 @@
                         <tr>
                             <td>{{orden.id_orden_pedido}}</td>
                             <td>{{orden.suma_precio}}</td>
-                            <td><a href="#" class="btn btn-primary">Detalles</a></td>
+                            <td><a href="{% url 'detalle_op' orden.id_orden_pedido %}" class="btn btn-primary">Detalles</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
