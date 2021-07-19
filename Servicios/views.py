@@ -71,7 +71,6 @@ def registro_plato(request):
         if datos_pl.is_valid():
             datos_pl.save()
         return redirect('listar_servicio_comedor')
-    
     else:
         datos_pl = FormularioPlatos()
-    return render(request, "Servicios/registro_plato.html", {'datos_pl': datos_pl })
+    return render(request, "Servicios/registro_plato.html", {'datos_pl': datos_pl})

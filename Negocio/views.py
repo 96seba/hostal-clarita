@@ -174,3 +174,9 @@ def registro_habitacion(request):
 def listar_habitacion(request):
     lista_h = Habitacion.objects.all()
     return render(request, "Negocio/listar_habitacion.html", {'lista_h': lista_h})
+
+
+def borrar_habitacion(request, nro_habitacion):
+    borrar = Habitacion.objects.get(nro_habitacion=nro_habitacion)
+    borrar.delete()
+    return redirect('listar_habitacion')

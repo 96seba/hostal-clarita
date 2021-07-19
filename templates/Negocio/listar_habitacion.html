@@ -30,6 +30,7 @@
                 <th>Tipo de cama</th>
                 <th>Accesorios habitacion</th>
                 <th>Precio de habitacion</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
 
@@ -41,6 +42,14 @@
                 <td>{{ o.tipo_cama }}</td>
                 <td>{{ o.accesorios_habitacion }}</td>
                 <td>$ {{ o.precio_habitacion }}</td>
+                <td>
+                    <a href="{% url 'borrar_habitacion' o.nro_habitacion %}"
+                        onclick="return confirm('¿Confirma eliminación de esta orden? Esta acción no se puede deshacer')"
+                        class="btn btn-danger">
+                        <span class="d-md-none bi-trash-fill"></span>
+                        <span class="d-none d-md-inline">Eliminar</span>
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
