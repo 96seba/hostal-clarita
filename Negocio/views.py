@@ -29,6 +29,9 @@ def registro_cliente(request):
             nuevo_usuario.save()
             nuevo_cliente.save()
             return redirect('index')
+        else:
+            form_usuario = FormularioUsuario(request.POST)
+            form_cliente = FormularioCliente(request.POST)
     else:
         form_usuario = FormularioUsuario()
         form_cliente = FormularioCliente()
@@ -88,6 +91,9 @@ def editar_orden_compra(request, oc_id):
             orden_actualizada.cantidad_huespedes = datos_huespedes.total_form_count()
             orden_actualizada.save()
             datos_huespedes.save()
+        else:
+            form_oc = FormularioOrdenCompra(request.POST)
+            form_huespedes = huespedes(request.POST)
     # prellena los formularios con los datos
     form_oc = FormularioOrdenCompra(instance=orden)
     form_huespedes = huespedes(instance=orden)
@@ -163,6 +169,8 @@ def registro_habitacion(request):
             nueva_habitacion = datos_habitacion.save(commit=False)
             nueva_habitacion.save()
             return redirect('listar_habitacion')
+        else:
+            form_habitacion = FormularioHabitacion(request.POST)
     else:
         form_habitacion = FormularioHabitacion()
     return render(

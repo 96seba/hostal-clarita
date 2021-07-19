@@ -54,7 +54,9 @@ def registro_servicio_comedor(request):
         datos_sc = FormularioServiciosComedor(request.POST)
         if datos_sc.is_valid():
             datos_sc.save()
-        return redirect('listar_servicio_comedor')
+            return redirect('listar_servicio_comedor')
+        else:
+            datos_sc = FormularioServiciosComedor(request.POST)
     else:
         datos_sc = FormularioServiciosComedor()
     return render(request, "Servicios/registro_servicios_comedor.html", {'datos_sc': datos_sc})
@@ -70,8 +72,9 @@ def registro_plato(request):
         datos_pl = FormularioPlatos(request.POST)
         if datos_pl.is_valid():
             datos_pl.save()
-        return redirect('listar_servicio_comedor')
-    
+            return redirect('listar_servicio_comedor')
+        else:
+            datos_pl = FormularioPlatos(request.POST)
     else:
         datos_pl = FormularioPlatos()
-    return render(request, "Servicios/registro_plato.html", {'datos_pl': datos_pl })
+    return render(request, "Servicios/registro_plato.html", {'datos_pl': datos_pl})

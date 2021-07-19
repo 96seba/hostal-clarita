@@ -46,6 +46,9 @@ def registro_empleado(request):
             nuevo_usuario.save()
             nuevo_empleado.save()
             return redirect('index')
+        else:
+            form_usuario = FormularioUsuario(request.POST)
+            form_empleado = FormularioEmpleado(request.POST)
     else:
         form_usuario = FormularioUsuario()
         form_empleado = FormularioEmpleado()
