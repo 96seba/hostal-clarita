@@ -8,7 +8,9 @@ from .views import (
     listar_facturas,
     generar_factura,
     detalle_factura,
-    anular_factura
+    anular_factura,
+    registro_habitacion,
+    listar_habitacion
 )
 
 urlpatterns = [
@@ -20,5 +22,7 @@ urlpatterns = [
     path('facturas/', listar_facturas, name='listar_facturas'),
     path('facturas/generar/<int:oc_id>', generar_factura, name='generar_factura'),
     path('facturas/detalle/<int:id_factura>', detalle_factura, name='detalle_factura'),
-    path('facturas/anular/<int:id_factura>', anular_factura, name='anular_factura')
+    path('facturas/anular/<int:id_factura>', anular_factura, name='anular_factura'),
+    path('habitacion/registro/', registro_habitacion, name='registro_habitacion'),
+    path('habitacion/', listar_habitacion, name='listar_habitacion')
 ]

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}Listar habitacion{% endblock titulo %}
+
+{% block pag_actual %}listar-habitacion{% endblock pag_actual %}
+
+{% block contenido %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Listar habitacion</title>
+</head>
+
+<body>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Numero de habitacion</th>
+                <th>Estado de habitacion</th>
+                <th>Tipo de cama</th>
+                <th>Accesorios habitacion</th>
+                <th>Precio de habitacion</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for o in lista_h %}
+            <tr>
+                <td>{{ o.nro_habitacion }}</td>
+                <td>{{ o.estado_habitacion }}</td>
+                <td>{{ o.tipo_cama }}</td>
+                <td>{{ o.accesorios_habitacion }}</td>
+                <td>$ {{ o.precio_habitacion }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+
+</html>
+
+{% endblock contenido %}

@@ -3,8 +3,8 @@ from django.forms import inlineformset_factory
 from django.core.exceptions import ObjectDoesNotExist
 from Usuarios.models import Roles
 from Usuarios.forms import FormularioUsuario, FormularioCliente
-from .models import OrdenDeCompra, Huesped, Factura
-from .forms import FormularioOrdenCompra, FormulariosHuespedes
+from .models import OrdenDeCompra, Huesped, Factura, Habitacion
+from .forms import FormularioOrdenCompra, FormulariosHuespedes, FormularioHabitacion
 
 
 PRECIO_HABITACION = [
@@ -154,3 +154,23 @@ def anular_factura(request, id_factura):
     factura = Factura.objects.get(nro_factura=id_factura)
     factura.delete()
     return redirect('listar_facturas')
+
+
+def registro_habitacion(request):
+    if request.method == 'POST':
+        datos_habitacion = FormularioHabitacion(request.POST)
+        if datos_habitacion.is_valid():
+            nueva_habitacion = datos_habitacion.save(commit=False)
+            nueva_habitacion.save()
+            return redirect('listar_habitacion')
+    else:
+        form_habitacion = FormularioHabitacion()
+    return render(
+        request,
+        'Negocio/registro_habitacion.html',
+        {'form_habitacion': form_habitacion})
+
+
+def listar_habitacion(request):
+    lista_h = Habitacion.objects.all()
+    return render(request, "Negocio/listar_habitacion.html", {'lista_h': lista_h})
