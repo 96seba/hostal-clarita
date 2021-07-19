@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Registro de nuevo empleado
+{% endblock titulo %}
+
+{% block contenido %}
+    <script src="{% static 'js/validador_rut.js' %}"></script>
+    <article>
+        <form method="post" class="form row">
+            {% csrf_token %}
+            <div class="col-12 mb-4">
+                <h2>Registro de empleado</h2>
+            </div>
+            <div class="col-6 mb-4">
+                <a href="{% url 'index' %}" class="btn btn-warning"><span class="bi-chevron-left"></span> Cancelar</a>
+            </div>
+            <div class="col-6 mb4 text-end">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
+                </div>
+            </div>
+            <div class="col-6">
+                {{ form_usuario.non_field_errors }}
+                {% for form in form_usuario %}
+                <div class="form-group d-grid mb-4">
+                    {{ form.label_tag }}
+                    {{ form }}
+                    {% if form.errors %}
+                        {{ form.errors }}
+                        {{ form.help_text }}
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-6">
+                {{ form_empleado.non_field_errors }}
+                {% for form in form_empleado %}
+                <div class="form-group d-grid mb-4">
+                    {{ form.label_tag }}
+                    {{ form }}
+                    {% if form.errors %}
+                        {{ form.errors }}
+                        {{ form.help_text }}
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-12 d-md-none d-grid">
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </div>
+        </form>
+    </article>
+{% endblock contenido %}

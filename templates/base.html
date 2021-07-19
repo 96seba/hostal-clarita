@@ -75,7 +75,8 @@
                     </li>
                     {% if user.es_administrador %}
                     <li class="nav-item">
-                        <a href="#" id="" class="nav-link">...</a>
+                        <a href="{% url 'registro_empleado' %}" id="" class="nav-link">Registro empleado</a>
+                        <a href="{% url 'listar_empleados' %}" id="" class="nav-link">Lista Empleados</a>
                     </li>
                     {% elif user.es_empleado %}
                     <li class="nav-item">

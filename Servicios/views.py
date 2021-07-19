@@ -56,7 +56,7 @@ def registro_servicio_comedor(request):
             datos_sc.save()
         return redirect('listar_servicio_comedor')
     else:
-        datos_sc=FormularioServiciosComedor()
+        datos_sc = FormularioServiciosComedor()
     return render(request, "Servicios/registro_servicios_comedor.html", {'datos_sc': datos_sc})
 
 
@@ -73,5 +73,5 @@ def registro_plato(request):
         return redirect('listar_servicio_comedor')
     
     else:
-        datos_pl=FormularioPlatos()
+        datos_pl = FormularioPlatos()
     return render(request, "Servicios/registro_plato.html", {'datos_pl': datos_pl })
