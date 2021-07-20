@@ -4,6 +4,12 @@
 {% block pag_actual %}listar-empleados{% endblock pag_actual%}
 {% block contenido %}
 
+
+  
+<div class="col-md-10 col-lg-8 text-end mb-4">
+    <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
+</div>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,3 +56,8 @@
 </html>
 
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Lista de empleados</h2>
+    <p>Este módulo permite ver la lista de empleados.</p>
+{% endblock manual %}

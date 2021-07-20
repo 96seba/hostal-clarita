@@ -8,6 +8,10 @@
 
 {% block contenido %}
 
+        <div class="col-md-10 col-lg-8 text-end mb-4">
+            <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
+        </div>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,6 +28,7 @@
   </head>
 
   <body>
+
     <div class="dropdown show">
       <a
         class="btn btn-secondary dropdown-toggle"
@@ -62,3 +67,9 @@
 </html>
 
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Recepción productos</h2>
+    <p>Este módulo permite seleccionar una orden de pedido para marcarla como recepcionada.</p>
+    <p>Cliquee el combobox para seleccionar una orden.</p>
+{% endblock manual %}

@@ -7,6 +7,10 @@
 {% block pag_actual %}registro-habitacion{% endblock pag_actual %}
 
 {% block contenido %}
+  
+<div class="col-md-10 col-lg-8 text-end mb-4">
+    <button onclick="toggleManualUsuario()" class="btn btn-primary">?</button>
+</div>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,3 +39,9 @@
 
 
 {% endblock contenido %}
+
+{% block manual %}
+    <h2>Registro de habitacion</h2>
+    <p>Este modulo permite registrar una habitacion.</p>
+    <p>Complete los datos y presione el boton guardar.</p>
+{% endblock manual %}
